@@ -12,3 +12,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Security Update triage card on project preparing to move over with more testing (4/13/2021)
 - NN V1.0 up and running well, more tweaking nad testing before Beta v1.1 rollout on June 1st (4/13/2021)
 - You can now download the .ZIP archive for S.A.N.E. on your own through the tags tab in the repo (4/13/2021)
+
+
+SECURITY:
+Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
