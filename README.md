@@ -3,8 +3,12 @@ Repo for S.A.N.E. (more info can be found under the public project), this is my 
 
 Explore the AI and please suggest what to do next or how to improve it!
 
+
+
+
 UPDATES (Find in-depth updates in the project on my page):
 - Added first implementation of security (username and password) (4/13/2021)
 - Preparing for .exe testing and next rollout no later than June 1st (4/13/2021)
 - Security Update triage card on project preparing to move over with more testing (4/13/2021)
 - NN V1.0 up and running well, more tweaking nad testing before Beta v1.1 rollout on June 1st (4/13/2021)
+- You can now download the .ZIP archive for S.A.N.E. on your own through the tags tab in the repo (4/13/2021)
