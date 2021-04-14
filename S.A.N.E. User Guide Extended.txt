@@ -1,5 +1,5 @@
 *****************
-S.A.N.E. Extended User Guide: Because You Can't Properly Read the Cod
+S.A.N.E. Extended User Guide:
 
 Calculator: Opens the calculator that can be found in this same folder/directory. The calculator is basic, with five functions (+, -, /, *, ^).
 New Tab: Opens a new tab in google chrome, user can tell S.A.N.E. what to open through the prompted speech time (about five seconds).
