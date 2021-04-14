@@ -14,5 +14,4 @@ Movement: Starts the simple movement algorithm for any game that requires cheati
 Coin Flip: Flips a coin for a 50/50 heads tails outcome.
 Define: Defines a word that you are prompted to tell S.A.N.E.
 
-Thank you for being patient with S.A.N.E, he's about as slow as it gets...
 *****************
