@@ -7,12 +7,10 @@ Explore the AI and please suggest what to do next or how to improve it!
 
 
 UPDATES (Find in-depth updates in the project on my page):
-- Added first implementation of security (username and password) (4/13/2021)
-- Preparing for .exe testing and next rollout no later than June 1st (4/13/2021)
-- Security Update triage card on project preparing to move over with more testing (4/13/2021)
-- NN V1.0 up and running well, more tweaking nad testing before Beta v1.1 rollout on June 1st (4/13/2021)
-- You can now download the .ZIP archive for S.A.N.E. on your own through the tags tab in the repo (4/13/2021)
-
+- Added built fileas and a first releave for Beta v1.0 (4/13-4/15/2021)
+- In-work is the security update, or Beta v1.1 for short, which will add security to the AI (as of 4/14/2021)
+- Aiming for the end of April to publish v1.1 as the tests are coming along well
+- In one to two weeks, newest python files will be posted, including security and NN testing files
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
