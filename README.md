@@ -3,7 +3,7 @@ Repo for S.A.N.E. (more info can be found under the public project), this is my 
 
 Explore the AI and please suggest what to do next or how to improve it!
 
-
+ANNOUNCEMENT: V1.1 IS NOW LIVE! DOWWNLOAD IT FROM THE RELEASES PAGE!
 
 
 UPDATES (Find in-depth updates in the project on my page):
