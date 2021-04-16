@@ -13,7 +13,8 @@ UPDATES (Find in-depth updates in the project on my page):
 - In one to two weeks, newest python files will be posted, including security and NN testing files
 - Pushed due date for v1.1 forward one month, targeted release May 1st 2021
 - Rollout onto machine in progress now, testing individual functions then posible early rollout
-- Move from python 3.8.9 to 3.9.4 sucessful, all files updates to fit requirements, and build sucessful (as of 4/16/2021)
+- Move from python 3.8.9 to 3.9.4 sucessful, all files updates to fit requirements, and build sucessful (4/16/2021)
+- I WILL NOT BE DOING A MAC OS X BUILD ANYMORE, this is due to the build needing ot be run on a Mac and I do not have a Mac to use (4/16/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
