@@ -12,6 +12,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Aiming for the end of April to publish v1.1 as the tests are coming along well
 - In one to two weeks, newest python files will be posted, including security and NN testing files
 - Pushed due date for v1.1 forward one month, targeted release May 1st 2021
+- Rollout onto machine in progress now, testing individual functions then posible early rollout
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
