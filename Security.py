@@ -18,7 +18,7 @@ def speak(speech):
     engine.say(speech)
     engine.runAndWait()
 
-
+# Comments for this login can be found in the main script, as the code here is the same due to this being the current version
 def returning_user_login():
     username = str(logins[0])
     username = username.replace('[', '')
