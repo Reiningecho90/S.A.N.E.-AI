@@ -168,7 +168,7 @@ def the_jawbreaker():
             break
 
 
-def speak_with_user():  # Speak with user is the conversational algorithm, with limited functions, althoughit
+def speak_with_user():  # Speak with user is the conversational algorithm, with limited functions, although it
     # eventually re-roots itself into the main algorithm
     speak("Sane friendly mode is in beta, if any features should be included or any bugs are prominent please report "
           "to the developer of Sane.")
