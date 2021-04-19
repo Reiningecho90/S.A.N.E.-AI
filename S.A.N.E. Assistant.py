@@ -1,4 +1,5 @@
 # Imports
+# Imports
 import speech_recognition as sr
 import pyttsx3
 import webbrowser
@@ -64,7 +65,8 @@ def returning_user_login():  # Login for returning users
     username = username.replace('[', '')
     username = username.replace("'", '')
     username = username.replace(']', '')
-    username = username.replace(',', '')  # tkes out excesss characters from password because they are from a .csv file, like the one attached in the GitHub repo
+    username = username.replace(',', '')  # Takes out excess characters from password because they are from a .csv
+    # file, like the one attached in the GitHub repo
     password = str(logins[1])
     password = password.replace(' nan nan nan nan', '')
     password = password.replace('[', '')
@@ -82,7 +84,8 @@ def returning_user_login():  # Login for returning users
             user_ret = input("Input your username here: ")
             if user_ret == username:
                 speak("Username approved")
-                os.system('cls' if os.name == 'nt' else 'clear')  # Clears the system so username and password is hidden after the user finished the process
+                os.system('cls' if os.name == 'nt' else 'clear')  # Clears the system so username and password is
+                # hidden after the user finished the process
                 return 0
             else:
                 speak("Sorry, your username could not be verified properly, please reload sane and retry logging in.")
@@ -101,7 +104,8 @@ def returning_user_login():  # Login for returning users
                 speak("Sorry, your password could not be verified properly, please reload sane and retry logging in.")
 
 
-def set_password():  # Setup for the username and password process, this appends two things to the .csv, a username and password
+def set_password():  # Setup for the username and password process, this appends two things to the .csv, a username
+    # and password
     speak("Welcome to the username and password setup, please input a password that meets the requirements into the "
           "terminal, (username first, password second):")
     user_new = input("Enter your username: ")
@@ -164,7 +168,8 @@ def the_jawbreaker():
             break
 
 
-def speak_with_user():  # Speak with user is the conversational algorithm, with limited functions, althoughit eventually re-roots itself into the main algorithm
+def speak_with_user():  # Speak with user is the conversational algorithm, with limited functions, althoughit
+    # eventually re-roots itself into the main algorithm
     speak("Sane friendly mode is in beta, if any features should be included or any bugs are prominent please report "
           "to the developer of Sane.")
     speak("How is your day today?")
@@ -678,7 +683,8 @@ def do_stuff():  # I can have fun too
         except sr.UnknownValueError:
             unknown_count = unknown_count + 1
             if unknown_count == 50:
-                t4 = threading.Thread(the_jawbreaker())  # Built-in errors for the speech-recognition library, as well as NN initialization
+                t4 = threading.Thread(the_jawbreaker())  # Built-in errors for the speech-recognition library,
+                # as well as NN initialization
                 t4.start()
 
         except sr.RequestError:
