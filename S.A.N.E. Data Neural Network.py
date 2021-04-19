@@ -6,6 +6,7 @@ import pandas as pd
 from pandas import errors as e
 import pyttsx3
 
+# Voice engine init for speech function
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
