@@ -1,4 +1,5 @@
 # Imports
+# Imports
 import speech_recognition as sr
 import pyttsx3
 import webbrowser
@@ -12,32 +13,106 @@ from PyDictionary import PyDictionary
 import pandas as pd
 import pandas.errors as e
 
+# Storage initialization, works along with the jawbreaker and predictor to gather user data
 try:
     data_storing = pd.read_csv("S.A.N.E. Data Files\data_storing.csv", delimiter=', ', engine='python')
     network_storage = pd.read_csv("S.A.N.E. Data Files\\network_storage.csv", delimiter=', ', engine='python')
     common_values = pd.read_csv("S.A.N.E. Data Files\common_values.csv", delimiter=', ', engine='python')
     secondary_storage = pd.read_csv("S.A.N.E. Data Files\secondary_storage.csv", delimiter=', ', engine='python')
-    print('read files')
     data_storing = data_storing.values.tolist()
     network_storage = network_storage.values.tolist()
     common_values = common_values.values.tolist()
     secondary_storage = secondary_storage.values.tolist()
-    print('listed files')
-except e.EmptyDataError:
+except e.EmptyDataError:  # Catches empty datasets and continues the execution
     pass
 
 
+# Start-up for the voice engine, used for the pyttsx3 voice API (microsoft based API)
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
 
+# More data dumps/storage
 primary_storing, search_list, daily_donations = [], [], []
+
+# Login initialization
+logins = pd.read_csv("S.A.N.E. Data Files\login.csv", engine='python')
+logins = logins.values.tolist()
+
+login_okay = False
 
 
 # Functions
 def speak(speech):
     engine.say(speech)
     engine.runAndWait()
+
+
+# Next three functions initialize the entire program with a username and password
+def login__init__():
+    ask_user = str(input("Do you already have a login?(y/n): "))
+    if 'y' in ask_user:
+        returning_user_login()
+    elif 'n' in ask_user:
+        set_password()
+    elif 'y' and 'n' not in ask_user:
+        speak("Please only input 'y', or 'n'")
+
+
+def returning_user_login():  # Login for returning users
+    username = str(logins[0])
+    username = username.replace(' nan nan nan nan', '')
+    username = username.replace('[', '')
+    username = username.replace("'", '')
+    username = username.replace(']', '')
+    username = username.replace(',', '')  # tkes out excesss characters from password because they are from a .csv file, like the one attached in the GitHub repo
+    password = str(logins[1])
+    password = password.replace(' nan nan nan nan', '')
+    password = password.replace('[', '')
+    password = password.replace("'", '')
+    password = password.replace(']', '')
+    password = password.replace(',', '')
+    while 1:
+        user_ret = input("Input your username here: ")
+        password_ret = input("Input your password: ")
+        if user_ret == username:
+            speak("Username approved")
+            os.system('cls' if os.name == 'nt' else 'clear')
+        elif user_ret != username:
+            speak("Wrong username, please retry")
+            user_ret = input("Input your username here: ")
+            if user_ret == username:
+                speak("Username approved")
+                os.system('cls' if os.name == 'nt' else 'clear')  # Clears the system so username and password is hidden after the user finished the process
+                return 0
+            else:
+                speak("Sorry, your username could not be verified properly, please reload sane and retry logging in.")
+        if password_ret == password:
+            speak("Password approved, welcome back")
+            os.system('cls' if os.name == 'nt' else 'clear')
+            return 0
+        elif password_ret != password:
+            speak("Please retry password")
+            password_ret = input("Input your password: ")
+            if password_ret == password:
+                speak("Password approved")
+                os.system('cls' if os.name == 'nt' else 'clear')
+                return 0
+            else:
+                speak("Sorry, your password could not be verified properly, please reload sane and retry logging in.")
+
+
+def set_password():  # Setup for the username and password process, this appends two things to the .csv, a username and password
+    speak("Welcome to the username and password setup, please input a password that meets the requirements into the "
+          "terminal, (username first, password second):")
+    user_new = input("Enter your username: ")
+    p_new = input("Enter your password (preferably greater than 8 characters including capitals, numbers and "
+                  "special characters for security: ")
+    logins.append(user_new)
+    logins.append(p_new)
+    login_DF = pd.DataFrame(logins, columns=None)
+    login_DF.to_csv('S.A.N.E. Data Files/login.csv', index=False, columns=None, sep=',')
+    returning_user_login()
 
 
 def the_jawbreaker():
@@ -88,9 +163,9 @@ def the_jawbreaker():
                 continue
         else:
             break
-    
 
-def speak_with_user():
+
+def speak_with_user():  # Speak with user is the conversational algorithm, with limited functions, althoughit eventually re-roots itself into the main algorithm
     speak("Sane friendly mode is in beta, if any features should be included or any bugs are prominent please report "
           "to the developer of Sane.")
     speak("How is your day today?")
@@ -114,7 +189,7 @@ def speak_with_user():
                 while 1:
                     y_n = input("Exit Friendly Mode?: ")
                     if y_n == 'y':
-                        exit(do_shit())
+                        exit(do_stuff())
                     else:
                         continue
 
@@ -136,13 +211,13 @@ def speak_with_user():
                         speak('What would you like to search?')
                         audio = r.listen(source, timeout=3)
                         audio = r.recognize_google(audio)
-                        speak("Your results are being processed now, sir.")
+                        speak("Your results are being processed now.")
                         answer = wikipedia.summary(audio, sentences=5)
                         speak(answer)
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -155,7 +230,7 @@ def speak_with_user():
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -178,7 +253,7 @@ def speak_with_user():
                 while 1:
                     y_n = input("Exit Friendly Mode?: ")
                     if y_n == 'y':
-                        exit(do_shit())
+                        exit(do_stuff())
                     else:
                         continue
 
@@ -201,13 +276,13 @@ def speak_with_user():
                         audio = r.listen(source, timeout=3)
                         audio = r.recognize_google(audio)
                         search_list.add(audio)
-                        speak("Your results are being processed now, sir.")
+                        speak("Your results are being processed now, .")
                         answer = wikipedia.summary(audio, sentences=5)
                         speak(answer)
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -220,7 +295,7 @@ def speak_with_user():
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -233,7 +308,7 @@ def speak_with_user():
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -246,7 +321,7 @@ def speak_with_user():
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -267,7 +342,7 @@ def speak_with_user():
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -276,7 +351,7 @@ def speak_with_user():
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -310,13 +385,13 @@ def speak_with_user():
                         audio = r.listen(source, timeout=3)
                         audio = r.recognize_google(audio)
                         search_list.add(audio)
-                        speak("Your results are being processed now, sir.")
+                        speak("Your results are being processed now, .")
                         answer = wikipedia.summary(audio, sentences=5)
                         speak(answer)
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -329,7 +404,7 @@ def speak_with_user():
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -342,7 +417,7 @@ def speak_with_user():
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -355,7 +430,7 @@ def speak_with_user():
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -376,7 +451,7 @@ def speak_with_user():
                         while 1:
                             y_n = input("Exit Friendly Mode?: ")
                             if y_n == 'y':
-                                exit(do_shit())
+                                exit(do_stuff())
                             else:
                                 continue
 
@@ -385,15 +460,15 @@ def speak_with_user():
                     while 1:
                         y_n = input("Exit Friendly Mode?: ")
                         if y_n == 'y':
-                            exit(do_shit())
+                            exit(do_stuff())
                         else:
                             continue
             elif 'no' or 'not' in response:
                 speak("Okay I'll be here to help if you need me")
                 while 1:
-                    y_n = input("Exit Friendly Mode?: ")
+                    y_n = input("Exit Friendly Mode?(y/n): ")
                     if y_n == 'y':
-                        exit(do_shit())
+                        exit(do_stuff())
                     else:
                         continue
 
@@ -430,7 +505,7 @@ def bluetooth_feedback():
             return False
 
 
-def do_shit():  # I can have fun too
+def do_stuff():  # I can have fun too
     chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
     dictionary = PyDictionary()
     unknown_count = 0
@@ -442,7 +517,7 @@ def do_shit():  # I can have fun too
             audio = r.recognize_google(audio)  # Initially Recognizing the given string values
 
             if 'you there' in audio:  # All of these functions are self explanatory
-                speak("At your service sir")
+                speak("At your service ")
 
             elif 'friendly mode' in audio:
                 t3 = threading.Thread(release_the_hounds())
@@ -453,11 +528,11 @@ def do_shit():  # I can have fun too
                 audio = r.listen(source, timeout=3)
                 audio = r.recognize_google(audio)
                 webbrowser.get(chrome_path).open(audio + ".com")
-                speak("Tab opened sir")
+                speak("Tab opened ")
 
             elif 'time' in audio:
                 strTime = datetime.datetime.now().strftime("%H:%M:%S")
-                speak(f"Sir, the time is {strTime}")
+                speak(f", the time is {strTime}")
 
             elif 'sicko mode' in audio:
                 speak("Astro, yeah Sun is down, freezing' cold, That's how we already know, winter's here, "
@@ -516,7 +591,7 @@ def do_shit():  # I can have fun too
                 audio = r.listen(source, timeout=3)
                 audio = r.recognize_google(audio)
                 search_list.append(audio)
-                speak("Your results are being processed now, sir.")
+                speak("Your results are being processed now, .")
                 answer = wikipedia.summary(audio, sentences=5)
                 speak(answer)
 
@@ -583,12 +658,12 @@ def do_shit():  # I can have fun too
                 exit()
 
             elif 'hibernate' in audio:
-                speak("Okay how many seconds should I sleep sir?")
+                speak("Okay how many seconds should I sleep?")
                 audio = r.listen(source, timeout=3)
                 audio = r.recognize_google(audio)
                 speak(f"going down for {audio} seconds.")
                 time.sleep(int(audio))
-                speak("I'm back sir.")
+                speak("I'm back .")
 
             elif 'auto click' in audio:
                 speak("Please set up the auto-clicker yourself as I can not do that.")
@@ -603,15 +678,13 @@ def do_shit():  # I can have fun too
 
         except sr.UnknownValueError:
             unknown_count = unknown_count + 1
-            print('...UV')
-            if unknown_count > 20:
-                t4 = threading.Thread(the_jawbreaker())
+            if unknown_count == 50:
+                t4 = threading.Thread(the_jawbreaker())  # Built-in errors for the speech-recognition library, as well as NN initialization
                 t4.start()
 
         except sr.RequestError:
             unknown_count = unknown_count + 1
-            print('...RE')
-            if unknown_count > 20:
+            if unknown_count == 50:
                 t4 = threading.Thread(the_jawbreaker())
                 t4.start()
 
@@ -623,11 +696,13 @@ with mic as source:  # Kinda like a main program but super short, most of the go
     r.adjust_for_ambient_noise(source)
 
     hit1 = random.uniform(0, 20)
-    hit2 = random.uniform(0, 20)
+    hit2 = random.uniform(0, 20)  # This is for users with bluetooth headphones that they use while with S.A.N.E.
     if hit1 == hit2:
         bluetooth_feedback()
 
-    speak("Hello, welcome to sane, dev build")
+    speak("Hello, welcome to sane.")
+    if not login_okay:
+        login__init__()  # Initializes the login process
 
-    t1 = threading.Thread(do_shit())
+    t1 = threading.Thread(do_stuff())
     t1.start()
