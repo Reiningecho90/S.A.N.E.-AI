@@ -8,6 +8,7 @@ ANNOUNCEMENT: V1.1 IS NOW LIVE! DOWNLOAD IT FROM THE RELEASES PAGE!
 
 UPDATES (Find in-depth updates in the project on my page):
 - Purged updates from this README.md to the Update-archive.txt file located in main branch (4/19/2021)
+- Welcomed @Blob758 to the repo
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
