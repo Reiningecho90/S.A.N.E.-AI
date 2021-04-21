@@ -12,6 +12,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Starting new neural network design process, and beginning to write code
 - Closing question issue on raising wiki exception, pyenchant library finds related words, NN will refine them
 - Working first concept into testing. Looks good so far with the exception of data output not being there
+- Added bugged code to the testing branch
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
