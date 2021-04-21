@@ -5,8 +5,9 @@ import random
 import pandas as pd
 from pandas import errors as e
 import pyttsx3
+import enchant
 
-# Voice engine init for speech function
+dictionary = enchant.Dict("en_US")
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
@@ -34,6 +35,7 @@ def speak(speech):
 
 
 def the_jawbreaker():
+    global best_value
     print('Running the jawbreaker')  # Print statements used for confirmation across functions
     for i in data_storing:
         if i not in secondary_storage:
@@ -50,18 +52,18 @@ def the_jawbreaker():
         val_list = list(value.split(' '))  # Dissect value to refine dataframe
         word_1 = val_list[0]
         word_2 = val_list[1]
-        if word_1 or word_2 not in network_storage:  # Write the value to separate containers (network, common)
+        if word_1 or word_2 in network_storage:  # Write the value to separate containers (network, common)
             network_storage.append(word_1)
             network_storage.append(word_2)
-        elif word_1 or word_2 in network_storage:
+        elif word_1 or word_2 not in network_storage:
             network_storage.append(word_1)
             network_storage.append(word_2)
             common_values.append(word_1)
             common_values.append(word_2)
     else:
-        if value not in network_storage:  # Single value placement command
+        if value in network_storage:  # Single value placement command
             network_storage.append(value)
-        elif value in network_storage:
+        elif value not in network_storage:
             network_storage.append(value)
             common_values.append(value)
 
@@ -71,13 +73,12 @@ def the_jawbreaker():
         item_count = common_values.count(i)
         print("search done")
 
-        if item_count > 1 and i != "['default 2', nan]" and i != "['default', nan]":
-            # Idle count statement (number can be adjusted)
+        if item_count > 1 and len(i) < 6:
             best_value = i
-            speak(f"You have been idle, do you want to look further into {best_value}")
-            break
-        else:
-            continue
+
+            dictionary.check(best_value)
+
+            print(dictionary.suggest(best_value))
 
 
 # Completely disregard this entire section, copied from the main script and has no effect besides threading in the
