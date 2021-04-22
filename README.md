@@ -5,3 +5,4 @@ This is the section where you can find the main script, and the code it holds. T
 
 ## Updates:
 - Added comments and updated v1.1 script. These changes can be found in 'S.A.N.E. Assistant.py'
+- Preparing to move th enew NN in for v1.2 testing (this could be the last beta before fullpublicity AKA S.A.N.E. 1.0)
