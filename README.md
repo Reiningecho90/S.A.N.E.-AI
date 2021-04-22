@@ -13,6 +13,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Closing question issue on raising wiki exception, pyenchant library finds related words, NN will refine them
 - Working first concept into testing. Looks good so far with the exception of data output not being there
 - Added bugged code to the testing branch
+- More work on NN today, the next goal is to return a good value from thenetworkthen work with implementation
 
 Notes:
 - Look over CodeQL Alerts, some were raised recently I think... (probably main branch erroroing because there is no code)
