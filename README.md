@@ -18,6 +18,7 @@ UPDATES (Find in-depth updates in the project on my page):
 Notes:
 - Look over CodeQL Alerts, some were raised recently I think... (probably main branch erroroing because there is no code)
 - Made changes to the source code branch (4/22/2021)
+- Changed code of cunduct branch name
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
