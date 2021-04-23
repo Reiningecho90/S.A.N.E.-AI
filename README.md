@@ -16,7 +16,6 @@ UPDATES (Find in-depth updates in the project on my page):
 - More work on NN today, the next goal is to return a good value from thenetworkthen work with implementation
 
 Notes:
-- Look over CodeQL Alerts, some were raised recently I think... (probably main branch erroroing because there is no code)
 - Made changes to the source code branch (4/22/2021)
 - Changed code of cunduct branch name
 
