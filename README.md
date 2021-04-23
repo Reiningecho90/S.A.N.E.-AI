@@ -13,11 +13,11 @@ UPDATES (Find in-depth updates in the project on my page):
 - Closing question issue on raising wiki exception, pyenchant library finds related words, NN will refine them
 - Working first concept into testing. Looks good so far with the exception of data output not being there
 - Added bugged code to the testing branch
-- More work on NN today, the next goal is to return a good value from thenetworkthen work with implementation
+- More work on NN today, the next goal is to return a good value from the network then work with implementation
+- Changed code of conduct branch name to be more readable
 
 Notes:
 - Made changes to the source code branch (4/22/2021)
-- Changed code of cunduct branch name
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
