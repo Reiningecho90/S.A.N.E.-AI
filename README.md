@@ -15,6 +15,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Added bugged code to the testing branch
 - More work on NN today, the next goal is to return a good value from the network then work with implementation
 - Changed code of conduct branch name to be more readable
+- Found library for the weather forecast, closed issue
 
 Notes:
 - Made changes to the source code branch (4/22/2021)
