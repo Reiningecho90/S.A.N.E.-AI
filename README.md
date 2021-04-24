@@ -7,15 +7,8 @@ ANNOUNCEMENT: V1.1 IS NOW LIVE! DOWNLOAD IT FROM THE RELEASES PAGE!
 
 
 UPDATES (Find in-depth updates in the project on my page):
-- Purged updates from this README.md to the Update-archive.txt file located in main branch (4/19/2021)
-- Welcomed @Blob758 to the repo (4/20/2021)
-- Starting new neural network design process, and beginning to write code
-- Closing question issue on raising wiki exception, pyenchant library finds related words, NN will refine them
-- Working first concept into testing. Looks good so far with the exception of data output not being there
-- Added bugged code to the testing branch
-- More work on NN today, the next goal is to return a good value from the network then work with implementation
-- Changed code of conduct branch name to be more readable
 - Found library for the weather forecast, closed issue
+
 
 Notes:
 - Made changes to the source code branch (4/22/2021)
