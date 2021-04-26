@@ -8,6 +8,7 @@ ANNOUNCEMENT: V1.1 IS NOW LIVE! DOWNLOAD IT FROM THE RELEASES PAGE!
 
 UPDATES (Find in-depth updates in the project on my page):
 - Found library for the weather forecast, closed issue
+- Setting up a possible implementation strategy for the weather API
 
 
 Notes:
