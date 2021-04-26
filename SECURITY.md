@@ -4,7 +4,7 @@
 | ------- | ------------------ |
 | 1.0.0   | :x:                |
 | 1.1.0   | :white_check_mark: |
-(1.1 coming soon to releases page, target rollout June 1st)
+| 1.2.0 (soon)   | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
