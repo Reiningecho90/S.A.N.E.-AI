@@ -11,6 +11,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Setting up a possible implementation strategy for the weather API
 - .gitattributes did not work, and thus was removed to declutter
 - Starting to work on the weather API and putting the NN off into the future
+- Added README to the code of conduct branch, closing issue (4/27/2021)
 
 
 Notes:
