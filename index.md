@@ -1,37 +1,15 @@
-## Welcome to GitHub Pages
+## Hello, Welcome to S.A.N.E.
 
-You can use the [editor on GitHub](https://github.com/Reiningecho90/S.A.N.E.-Repo/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Welcome to the official website for the S.A.N.E. AI. The nicknae for this AI is S.A.N.E. which stand for Semi-Artificial Neural Envoronment. this is the project i have been working on in my free time, and is also helping me to practice for the PCEP exam that I will be taking soon. As a young developer, I strive to make the best program I possibly can.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## About the Project
 
-### Markdown
+As said before, the AI is aiding me in achieving the PCEP Python certification. I am working hard to make the AI as streamlined as possible. The current rollout is Beta Version 1.1.0, this is the most recent stable rollout. All of the possible functions you can use can be found on the repository Wiki page here: https://github.com/Reiningecho90/S.A.N.E.-Repo/wiki. I do no tplan to slow development anytime soon, and as always I hope to make this better constantly.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Goals for the Future
 
-```markdown
-Syntax highlighted code block
+The goals are lofty, but not out of reach. Eventually I would like S.A.N.E. to run without a command line popping up, and be completely local onto a 24/7, 365 server. As you may know, a server is not anything cheap, so consider becoming a Stargazer and like the GitHub page: https://github.com/Reiningecho90/S.A.N.E.-Repo
 
-# Header 1
-## Header 2
-### Header 3
+## Contact the Developer
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Reiningecho90/S.A.N.E.-Repo/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+As the AI is growing at a steady rate, we  are sure to miss some things, my GitHub profile is linked, and the email can be found there: https://github.com/Reiningecho90
