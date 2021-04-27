@@ -3,8 +3,10 @@ Repo for S.A.N.E. (more info can be found under the public project), this is my 
 
 Explore the AI and please suggest what to do next or how to improve it!
 
-ANNOUNCEMENT: V1.1 IS NOW LIVE! DOWNLOAD IT FROM THE RELEASES PAGE!
+ANNOUNCEMENTS: 
+V1.1 IS NOW LIVE! DOWNLOAD IT FROM THE RELEASES PAGE!
 
+Its official! The new website hosted by GitHub is now live: https://reiningecho90.github.io/S.A.N.E.-Repo/!
 
 UPDATES (Find in-depth updates in the project on my page):
 - Found library for the weather forecast, closed issue
