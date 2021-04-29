@@ -17,7 +17,6 @@ Update archive:
 - Development on GitHub may br scarce because the coding process for the v1.2 neural network will be fairly standard and uneventful (4/18/2021)
 - Adjusted release for v1.1 to production ready after final .zip issue with diplication was fixed, download available on releases (4/18/2021)
 
-- Purged updates from this README.md to the Update-archive.txt file located in main branch (4/19/2021)
 - Welcomed @Blob758 to the repo (4/20/2021)
 - Starting new neural network design process, and beginning to write code
 - Closing question issue on raising wiki exception, pyenchant library finds related words, NN will refine them
@@ -25,3 +24,10 @@ Update archive:
 - Added bugged code to the testing branch
 - More work on NN today, the next goal is to return a good value from the network then work with implementation
 - Changed code of conduct branch name to be more readable
+
+- Found library for the weather forecast, closed issue
+- Setting up a possible implementation strategy for the weather API
+- .gitattributes did not work, and thus was removed to declutter
+- Starting to work on the weather API and putting the NN off into the future
+- Added README to the code of conduct branch, closing issue (4/27/2021)
+- Added new folder to main to hold user information and linked the wiki (4/27/2021)
