@@ -9,15 +9,7 @@ V1.1 IS NOW LIVE! DOWNLOAD IT FROM THE RELEASES PAGE!
 Its official! The new website hosted by GitHub is now live: https://reiningecho90.github.io/S.A.N.E.-AI/!
 
 UPDATES (Find in-depth updates in the project on my page):
-- Found library for the weather forecast, closed issue
-- Setting up a possible implementation strategy for the weather API
-- .gitattributes did not work, and thus was removed to declutter
-- Starting to work on the weather API and putting the NN off into the future
-- Added README to the code of conduct branch, closing issue (4/27/2021)
-- Added new folder to main to hold user information and linked the wiki (4/27/2021)
-
-Notes:
-- Made changes to the source code branch (4/22/2021)
+- Purged to Update-Archive.txt (4/29/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
