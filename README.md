@@ -18,6 +18,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Weather API implementation found and implementation alongside the NN (5/4/2021)
 - Working on new weather operations (weekly forecast testing) (5/5/2021)
 - Working on improving the hibernate/timer function to incorporate minutes and hours apart from seconds (5/5/2021)
+- Found a possible answer for the above update, implemented, now testing (5/6/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
