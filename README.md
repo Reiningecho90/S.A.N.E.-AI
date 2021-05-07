@@ -13,6 +13,7 @@ Its official! The new website hosted by GitHub is now live: https://reiningecho9
 UPDATES (Find in-depth updates in the project on my page):
 - Purged to Update-Archive.txt (5/7/2021)
 - Closed issue for adding, minutes, hours, seconds implementation in the hibernate function, read final comment for more info (5/7/2021)
+- Updated `README.md` in the `PC-Source-Code` branch, changes made today (5/7/2021)
 
 
 SECURITY:
