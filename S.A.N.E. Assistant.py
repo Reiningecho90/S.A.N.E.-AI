@@ -1,9 +1,10 @@
 # Imports
-# Imports
 import speech_recognition as sr
 import pyttsx3
 import webbrowser
+import python_weather
 import datetime
+from asyncio import get_event_loop
 import threading
 import time
 import wikipedia
@@ -15,15 +16,19 @@ import pandas.errors as e
 
 # Storage initialization, works along with the jawbreaker and predictor to gather user data
 try:
-    data_storing = pd.read_csv("S.A.N.E. Data Files\data_storing.csv", delimiter=', ', engine='python')
-    network_storage = pd.read_csv("S.A.N.E. Data Files\\network_storage.csv", delimiter=', ', engine='python')
-    common_values = pd.read_csv("S.A.N.E. Data Files\common_values.csv", delimiter=', ', engine='python')
-    secondary_storage = pd.read_csv("S.A.N.E. Data Files\secondary_storage.csv", delimiter=', ', engine='python')
+    data_storing = pd.read_csv("S.A.N.EProject\S.A.N.E. Data Files\data_storing.csv", delimiter=', ', engine='python')
+    network_storage = pd.read_csv("S.A.N.EProject\S.A.N.E. Data Files\\network_storage.csv", delimiter=', ', engine='python')
+    common_values = pd.read_csv("S.A.N.EProject\S.A.N.E. Data Files\common_values.csv", delimiter=', ', engine='python')
+    secondary_storage = pd.read_csv("S.A.N.EProject\S.A.N.E. Data Files\secondary_storage.csv", delimiter=', ', engine='python')
     data_storing = data_storing.values.tolist()
     network_storage = network_storage.values.tolist()
     common_values = common_values.values.tolist()
     secondary_storage = secondary_storage.values.tolist()
-except e.EmptyDataError:  # Catches empty datasets and continues the execution
+    data_storing.clear()
+    network_storage.clear()
+    common_values.clear()
+    secondary_storage.clear()
+except e.EmptyDataError:
     pass
 
 
@@ -36,10 +41,13 @@ engine.setProperty('voice', voices[0].id)
 primary_storing, search_list, daily_donations = [], [], []
 
 # Login initialization
-logins = pd.read_csv("S.A.N.E. Data Files\login.csv", engine='python')
+logins = pd.read_csv("S.A.N.EProject\S.A.N.E. Data Files\login.csv", engine='python')
 logins = logins.values.tolist()
 
 login_okay = False
+
+# Weather API client init
+client = python_weather.Client(format=python_weather.IMPERIAL)
 
 
 # Functions
@@ -74,7 +82,9 @@ def returning_user_login():  # Login for returning users
     password = password.replace(']', '')
     password = password.replace(',', '')
     while 1:
+        speak('Input your username')
         user_ret = input("Input your username here: ")
+        speak('Input your password')
         password_ret = input("Input your password: ")
         if user_ret == username:
             speak("Username approved")
@@ -108,64 +118,57 @@ def set_password():  # Setup for the username and password process, this appends
     # and password
     speak("Welcome to the username and password setup, please input a password that meets the requirements into the "
           "terminal, (username first, password second):")
+    speak('Input your new username')
     user_new = input("Enter your username: ")
+    speak('Input your new password')
     p_new = input("Enter your password (preferably greater than 8 characters including capitals, numbers and "
                   "special characters for security: ")
     logins.append(user_new)
     logins.append(p_new)
     login_DF = pd.DataFrame(logins, columns=None)
-    login_DF.to_csv('S.A.N.E. Data Files/login.csv', index=False, columns=None, sep=',')
+    login_DF.to_csv('S.A.N.EProject\S.A.N.E. Data Files/login.csv', index=False, columns=None, sep=',')
     returning_user_login()
 
 
 def the_jawbreaker():
-    print('Running the jawbreaker')  # Print statements used for confirmation across functions
-    for i in data_storing:
-        if i not in secondary_storage:
-            secondary_storage.append(i)  # Iterate over storage samples from inputs to find usable samples
-            print(secondary_storage)
-        else:
-            continue
-
-    obj = random.choice(secondary_storage)
-
-    # Choose random sample from storage container
-    value = obj
-    if ' ' in value:
-        val_list = list(value.split(' '))  # Dissect value to refine dataframe
-        word_1 = val_list[0]
-        word_2 = val_list[1]
-        if word_1 or word_2 not in network_storage:  # Write the value to separate containers (network, common)
-            network_storage.append(word_1)
-            network_storage.append(word_2)
-        elif word_1 or word_2 in network_storage:
-            network_storage.append(word_1)
-            network_storage.append(word_2)
-            common_values.append(word_1)
-            common_values.append(word_2)
-    else:
-        if value not in network_storage:  # Single value placement command
-            network_storage.append(value)
-        elif value in network_storage:
-            network_storage.append(value)
-            common_values.append(value)
-
-    print("Running the predictor")  # Prediction algorithm is a searching loop that uses reference data
-    for i in common_values:
-        print("Searching for an item")
-        item_count = common_values.count(i)
-        print("search done")
-        print(i)
-        if i != "['default 2']":
-            if item_count > 1:
-                # Idle count statement (number can be adjusted)
-                best_value = i
-                speak(f"You have been idle, do you want to look further into {best_value}")
-                break
+    inp_count = 0
+    while True:
+        for i in data_storing:
+            if i not in secondary_storage:
+                secondary_storage.append(i)  # Iterate over storage samples from inputs to find usable samples
             else:
                 continue
+
+        obj = random.choice(secondary_storage)
+
+        # Choose random sample from storage container
+        value = obj
+        if ' ' in value:
+            val_list = list(value.split(' '))  # Dissect value to refine dataframe
+            word_1 = val_list[0]
+            word_2 = val_list[1]
+            if word_1 or word_2 in network_storage:  # Write the value to separate containers (network, common)
+                network_storage.append(word_1)
+                network_storage.append(word_2)
+            elif word_1 or word_2 not in network_storage:
+                network_storage.append(word_1)
+                network_storage.append(word_2)
+                common_values.append(word_1)
+                common_values.append(word_2)
         else:
-            break
+            if value in network_storage:  # Single value placement command
+                network_storage.append(value)
+            elif value not in network_storage:
+                network_storage.append(value)
+                common_values.append(value)
+
+        # Prediction algorithm is a searching loop that uses reference data
+        for i in network_storage:
+            item_count = network_storage.count()
+            
+            if count > 2:
+                suggestion = dictionary.suggest(i)
+                speak(random.choice(suggestion))
 
 
 def speak_with_user():  # Speak with user is the conversational algorithm, with limited functions, although it
@@ -482,16 +485,37 @@ def release_the_hounds():
     thread.start()
 
 
+async def weather():
+    speak('Where would you like the weather from?')
+    weather_area = r.listen(source)
+    weather_area = r.recognize_google(weather_area)
+
+    weather = await client.find(weather_area)
+    speak('The temperature is currently: ', weather.current.temperature, 'fahrenheit or about', int((weather.current.temperature-32)/1.8), 'celcius')
+    speak('Wopuld oyu like the weekly forecast?')
+    y_n = r.listen(source)
+    y_n = r.recognize_google(y_n)
+    if 'yes' in y_n:
+        for i in weather.forecast:
+            speak('On ' + str(i.day) + ' it will be ' + str(int((i.temperature-32)/1.8)) + ' celcius' + ' or about ' + str(i.temperature) + ' fahrenheit')
+    else:
+        speak('Okay')
+    await client.close()
+
+
 def calc():
-    exec(open('calculator.py').read())
+    speak('Opening the calculator')
+    exec(open('S.A.N.EProject\calculator.py').read())
 
 
 def afk_move():
-    exec(open('movement.py').read())
+    speak('Opening the AFK database')
+    exec(open('S.A.N.EProject\movement.py').read())
 
 
 def auto_click():
-    exec(open('autoclicker.py').read())
+    speak('Opening the autoclicker')
+    exec(open('S.A.N.EProject\\autoclicker.py').read())
 
 
 def bluetooth_feedback():
@@ -509,7 +533,7 @@ def bluetooth_feedback():
             return False
 
 
-def do_stuff():  # I can have fun too
+def do_stuff():
     chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
     dictionary = PyDictionary()
     unknown_count = 0
@@ -521,9 +545,9 @@ def do_stuff():  # I can have fun too
             audio = r.recognize_google(audio)  # Initially Recognizing the given string values
 
             if 'you there' in audio:  # All of these functions are self explanatory
-                speak("At your service ")
+                speak("At your service")
 
-            elif 'friendly mode' in audio:
+            elif 'friendly mode' in audio: # See lines 170-476 for the script
                 t3 = threading.Thread(release_the_hounds())
                 t3.start()
 
@@ -595,7 +619,7 @@ def do_stuff():  # I can have fun too
                 audio = r.listen(source, timeout=3)
                 audio = r.recognize_google(audio)
                 search_list.append(audio)
-                speak("Your results are being processed now, .")
+                speak("Your results are being processed now.")
                 answer = wikipedia.summary(audio, sentences=5)
                 speak(answer)
 
@@ -646,7 +670,6 @@ def do_stuff():  # I can have fun too
                 choice = random.choice(nums)
                 if choice == 1:
                     speak("The outcome is tails.")
-
                 elif choice == 2:
                     speak("The outcome is heads.")
 
@@ -655,6 +678,8 @@ def do_stuff():  # I can have fun too
                     speak("It appears its your lucky day, you had a one in 400 chance of being asked the question you "
                           "were asked at the beginning of the session, and because you answered yes we are opening "
                           "the terminal to input on bluetooth compatibility before you leave!")
+                    exp = input('How was your experience? ')
+
                 else:
                     continue
 
@@ -662,12 +687,35 @@ def do_stuff():  # I can have fun too
                 exit()
 
             elif 'hibernate' in audio:
-                speak("Okay how many seconds should I sleep?")
-                audio = r.listen(source, timeout=3)
-                audio = r.recognize_google(audio)
-                speak(f"going down for {audio} seconds.")
-                time.sleep(int(audio))
-                speak("I'm back .")
+                speak('Would oyu like me to sleep for seconds, minutes or hours?')
+                choice_time = r.listen(source)
+                choice_time = r.recognize_google(choice_time)
+                if 'seconds' in choice_time:
+                    speak("Okay how many seconds should I sleep?")
+                    audio = r.listen(source, timeout=3)
+                    audio = r.recognize_google(audio)
+                    speak(f"going down for {audio} seconds.")
+                    time.sleep(int(audio))
+                    speak("I'm back .")
+                elif 'minutes' in choice_time:
+                    speak("Okay how many minutes should I sleep?")
+                    audio = r.listen(source, timeout=3)
+                    audio = r.recognize_google(audio)
+                    speak(f"going down for {audio} minutes.")
+                    time.sleep(int(audio*60))
+                    speak("I'm back .")
+                elif 'hours' in choice_time:
+                    speak("Okay how many hours should I sleep?")
+                    audio = r.listen(source, timeout=3)
+                    audio = r.recognize_google(audio)
+                    speak(f"going down for {audio} hours.")
+                    time.sleep(int((audio*3600)))
+                    speak("I'm back.")
+
+
+            elif 'weather' in audio:
+                speak('One moment while we connect to the client')
+                get_event_loop().run_until_complete(weather())
 
             elif 'auto click' in audio:
                 speak("Please set up the auto-clicker yourself as I can not do that.")
@@ -679,12 +727,12 @@ def do_stuff():  # I can have fun too
                 speak("Please initiate the algorithm yourself as I can not do that")
                 t2 = threading.Thread(afk_move())
                 t2.start()
-
-        except sr.UnknownValueError:
+        
+        # Built-in errors for the speech-recognition library, as well as NN initialization
+        except sr.UnknownValueError: 
             unknown_count = unknown_count + 1
             if unknown_count == 50:
-                t4 = threading.Thread(the_jawbreaker())  # Built-in errors for the speech-recognition library,
-                # as well as NN initialization
+                t4 = threading.Thread(the_jawbreaker())  
                 t4.start()
 
         except sr.RequestError:
@@ -705,7 +753,7 @@ with mic as source:  # Kinda like a main program but super short, most of the go
     if hit1 == hit2:
         bluetooth_feedback()
 
-    speak("Hello, welcome to sane.")
+    speak("Hello, welcome to sane, please input your password.")
     if not login_okay:
         login__init__()  # Initializes the login process
 
