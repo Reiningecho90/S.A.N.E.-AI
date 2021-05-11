@@ -15,6 +15,8 @@ UPDATES (Find in-depth updates in the project on my page):
 - Closed issue for adding, minutes, hours, seconds implementation in the hibernate function, read final comment for more info (5/7/2021)
 - Updated `README.md` in the `PC-Source-Code` branch, changes made today (5/7/2021)
 - Added website link to universal sidebar (5/8/2021)
+- Merged pull request from `add-code-of-conduct` to main and deleted branch (5/8/2021)
+- Deleted code of conduct secondary branch (5/8/2021)
 
 
 SECURITY:
