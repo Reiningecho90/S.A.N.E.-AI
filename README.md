@@ -11,14 +11,7 @@ V1.1 is now live! Go download it: https://github.com/Reiningecho90/S.A.N.E.-AI/r
 Its official! The new website hosted by GitHub is now live: https://reiningecho90.github.io/S.A.N.E.-AI/!
 
 UPDATES (Find in-depth updates in the project on my page):
-- Purged to Update-Archive.txt (5/7/2021)
-- Closed issue for adding, minutes, hours, seconds implementation in the hibernate function, read final comment for more info (5/7/2021)
-- Updated `README.md` in the `PC-Source-Code` branch, changes made today (5/7/2021)
-- Added website link to universal sidebar (5/11/2021)
-- Merged pull request from `add-code-of-conduct` to main and deleted branch (5/11/2021)
-- Deleted code of conduct secondary branch (5/11/2021)
-- Updated main script in `PC-Source-Code` (5/11/2021)
-
+- Purged to Update-Archive.txt (5/12/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
