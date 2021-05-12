@@ -13,6 +13,7 @@ import random
 from PyDictionary import PyDictionary
 import pandas as pd
 import pandas.errors as e
+import enchant
 
 # Storage initialization, works along with the jawbreaker and predictor to gather user data
 try:
@@ -48,6 +49,9 @@ login_okay = False
 
 # Weather API client init
 client = python_weather.Client(format=python_weather.IMPERIAL)
+
+# Dictionary for NN
+dictionary = enchant.Dict("en_US")
 
 
 # Functions
