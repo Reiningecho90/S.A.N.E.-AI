@@ -39,3 +39,10 @@ Update archive:
 - Working on new weather operations (weekly forecast testing) (5/5/2021)
 - Working on improving the hibernate/timer function to incorporate minutes and hours apart from seconds (5/5/2021)
 - Found a possible answer for the above update, implemented, now testing (5/6/2021)
+
+- Closed issue for adding, minutes, hours, seconds implementation in the hibernate function, read final comment for more info (5/7/2021)
+- Updated `README.md` in the `PC-Source-Code` branch, changes made today (5/7/2021)
+- Added website link to universal sidebar (5/11/2021)
+- Merged pull request from `add-code-of-conduct` to main and deleted branch (5/11/2021)
+- Deleted code of conduct secondary branch (5/11/2021)
+- Updated main script in `PC-Source-Code` (5/11/2021)
