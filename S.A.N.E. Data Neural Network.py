@@ -82,7 +82,10 @@ def the_jawbreaker():
 
             print("Running the predictor")  # Prediction algorithm is a searching loop that uses reference data
             print(network_storage)
+
+            count = 0
             for i in network_storage:
+                count = count + 1
                 item_count = network_storage.count()
                 print("Searching for an item")
                 print("search done")
@@ -103,3 +106,4 @@ with mic as source:
     print("Starting thread")
     t1 = threading.Thread(the_jawbreaker())  # Here's the thread for the main script
     t1.start()
+
