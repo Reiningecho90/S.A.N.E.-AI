@@ -12,7 +12,9 @@ Its official! The new website hosted by GitHub is now live: https://reiningecho9
 
 UPDATES (Find in-depth updates in the project on my page):
 - Purged to Update-Archive.txt (5/12/2021)
-- Updated IDE environemtn and re-downloaded all packages needed (5/13/2021)
+- Updated IDE environemnt and re-downloaded all packages needed (5/13/2021)
+- First round of testing finished and successful, weather API is working flawlessly after minor fixes, newest code posted (5/13/2021)
+- Preparing to start new SKLearn NN build for possible early rollout with Beta V1.2 (5/13/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
