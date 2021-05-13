@@ -12,6 +12,7 @@ Its official! The new website hosted by GitHub is now live: https://reiningecho9
 
 UPDATES (Find in-depth updates in the project on my page):
 - Purged to Update-Archive.txt (5/12/2021)
+- Updated IDE environemtn and re-downloaded all packages needed (5/13/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
