@@ -6,7 +6,7 @@ Explore the AI and please suggest what to do next or how to improve it!
 Wiki page to learn about the project: https://github.com/Reiningecho90/S.A.N.E.-AI/wiki
 
 ANNOUNCEMENTS: 
-V1.1 is now live! Go download it: https://github.com/Reiningecho90/S.A.N.E.-AI/releases/tag/v1.1
+V1.2.0 is now live! Go download it: https://github.com/Reiningecho90/S.A.N.E.-AI/releases/tag/v1.2.0
 
 Its official! The new website hosted by GitHub is now live: https://reiningecho90.github.io/S.A.N.E.-AI/!
 
@@ -15,6 +15,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Updated IDE environemnt and re-downloaded all packages needed (5/13/2021)
 - First round of testing finished and successful, weather API is working flawlessly after minor fixes, newest code posted (5/13/2021)
 - Preparing to start new SKLearn NN build for possible early rollout with Beta V1.2 (5/13/2021)
+- Added new release, raw code files for the 1.2.0 test article and data files to correspond (5/14/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
