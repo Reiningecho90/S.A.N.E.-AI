@@ -14,6 +14,7 @@ from PyDictionary import PyDictionary
 import pandas as pd
 import pandas.errors as e
 import enchant
+import sklearn as sk
 
 # Storage initialization, works along with the jawbreaker and predictor to gather user data
 try:
@@ -167,7 +168,9 @@ def the_jawbreaker():
                 common_values.append(value)
 
         # Prediction algorithm is a searching loop that uses reference data
+        count = 0
         for i in network_storage:
+            count = count + 1
             item_count = network_storage.count()
             
             if count > 2:
