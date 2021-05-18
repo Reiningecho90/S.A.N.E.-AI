@@ -16,6 +16,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - First round of testing finished and successful, weather API is working flawlessly after minor fixes, newest code posted (5/13/2021)
 - Preparing to start new SKLearn NN build for possible early rollout with Beta V1.2 (5/13/2021)
 - Added new release, raw code files for the 1.2.0 test article and data files to correspond (5/14/2021)
+- Weather API discontinued due to unfixable dvelopment issues beyond our control, new version has unusable code peices in root and we can not adjust them remotely (5/18/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
