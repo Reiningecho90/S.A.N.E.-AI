@@ -12,7 +12,9 @@ Its official! The new website hosted by GitHub is now live: https://reiningecho9
 
 UPDATES (Find in-depth updates in the project on my page):
 - Purged to Update-Archive.txt (5/20/2021)
-- Working on nerual network bug that was found in late testing, hoping to release still on June 1st although development may be incrementally ahlted due to other projects (5/20/2021)
+- Working on nerual network bug that was found in late testing, hoping to release still on June 1st although development may be incrementally halted due to other projects (5/20/2021)
+- Neural network issue fixed, bug was in run cycle with VS code compared o it being in the script (5/21/2021)
+- Wokring through issues with settings script for 1.3 a bit early, 1.2 testing will be continued (5/21/2021)
 
 
 SECURITY:
