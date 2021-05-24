@@ -16,6 +16,8 @@ UPDATES (Find in-depth updates in the project on my page):
 - Neural network issue fixed, bug was in run cycle with VS code compared o it being in the script (5/21/2021)
 - Wokring through issues with settings script for 1.3 a bit early, 1.2 testing will be continued (5/21/2021)
 - Settings script issues fixed, testing first version then possibly rolling out with 1.2 (5/21/2021)
+- Preparing the final testing files for computer and testing functions for the v1.2.1 release soon (5/24/2021)
+- Announcemnt: Settings will most likely be released with v1.3.0 or 1.3.1 (5/24/2021)
 
 
 SECURITY:
