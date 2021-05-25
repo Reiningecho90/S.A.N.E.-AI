@@ -35,6 +35,12 @@ Custom Autoclicker: The first text box is the number of clicks and the second bo
 
 AFK Movement Program: 'movement' all you have to do is click the initiate button and it will start the movement loop.
 
+Find a Synonym: 'synonym' speak the given phrase and follow the directions spoken by S.A.N.E. to recieve a list of synonyms for a word
+
+Find an Antonym: 'antonym' speak the given phrase and follow the directions spoken by S.A.N.E. to recieve a list of antonyms for a word
+
+Translate a Word: 'translate' speak the given phrase and follow directions from S.A.N.E. to translate a word to another language.
+
 
 *********************************************************************************************
 NOTES:
