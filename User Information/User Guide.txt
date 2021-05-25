@@ -13,5 +13,9 @@ Auto Click: Starts the auto-clicker for any game that requires cheating.
 Movement: Starts the simple movement algorithm for any game that requires cheating.
 Coin Flip: Flips a coin for a 50/50 heads tails outcome.
 Define: Defines a word that you are prompted to tell S.A.N.E.
+Friendly Mode: Have a conversation with S.A.N.E. in the experimental conversation starter mode.
+Synonym: Find synonyms for a word.
+Antonym: Find antonyms for a word.
+Translate: Translate a word to a certain language.
 
 *****************
