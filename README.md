@@ -19,6 +19,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Preparing the final testing files for computer and testing functions for the v1.2.1 release soon (5/24/2021)
 - Announcemnt: Settings will most likely be released with v1.3.0 or 1.3.1 (5/24/2021)
 - Currently testing the exe file funcitons (5/25/2021)
+- Everything functioning properly on startup, rollout soon, about one week away (5/26/2021)
 
 
 SECURITY:
