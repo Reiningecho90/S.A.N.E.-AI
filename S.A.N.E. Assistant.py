@@ -1,8 +1,16 @@
+# Working on: BETA RELEASE v1.2.1
+# Finished: INCOMPLETE BETA v1.2.0
+
+# Update Description: Adds new features and functions, seceret testing is underway for a possible gender changing method and overall settings changing method.
+
+# Future Ideas: v1.3.x could incorporate an MSI installer instead of a direct file transfer.
+
+
+
 # Imports
 import speech_recognition as sr
 import pyttsx3
 import webbrowser
-import python_weather
 import datetime
 from asyncio import get_event_loop
 import threading
@@ -13,15 +21,15 @@ import random
 from PyDictionary import PyDictionary
 import pandas as pd
 import pandas.errors as e
-import enchant
-import sklearn as sk
+import json
+import tkinter as tk
 
 # Storage initialization, works along with the jawbreaker and predictor to gather user data
 try:
-    data_storing = pd.read_csv("S.A.N.EProject\S.A.N.E. Data Files\data_storing.csv", delimiter=', ', engine='python')
-    network_storage = pd.read_csv("S.A.N.EProject\S.A.N.E. Data Files\\network_storage.csv", delimiter=', ', engine='python')
-    common_values = pd.read_csv("S.A.N.EProject\S.A.N.E. Data Files\common_values.csv", delimiter=', ', engine='python')
-    secondary_storage = pd.read_csv("S.A.N.EProject\S.A.N.E. Data Files\secondary_storage.csv", delimiter=', ', engine='python')
+    data_storing = pd.read_csv("S.A.N.E. Data Files\data_storing.csv", delimiter=', ', engine='python')
+    network_storage = pd.read_csv("S.A.N.E. Data Files\\network_storage.csv", delimiter=', ', engine='python')
+    common_values = pd.read_csv("S.A.N.E. Data Files\common_values.csv", delimiter=', ', engine='python')
+    secondary_storage = pd.read_csv("S.A.N.E. Data Files\secondary_storage.csv", delimiter=', ', engine='python')
     data_storing = data_storing.values.tolist()
     network_storage = network_storage.values.tolist()
     common_values = common_values.values.tolist()
@@ -33,26 +41,29 @@ try:
 except e.EmptyDataError:
     pass
 
+# Settigns data loading
+settings_file = open('S.A.N.E. Data Files\\settings.json', 'r')
+settings_file_d = json.load(settings_file)
+settings_file.close()
+
+if settings_file_d["GENDER"] == 'MALE':
+    gender = 0
+elif settings_file_d["GENDER"] == 'FEMALE':
+    gender = 1
 
 # Start-up for the voice engine, used for the pyttsx3 voice API (microsoft based API)
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0].id)
+engine.setProperty('voice', voices[gender].id)
 
 # More data dumps/storage
 primary_storing, search_list, daily_donations = [], [], []
 
 # Login initialization
-logins = pd.read_csv("S.A.N.EProject\S.A.N.E. Data Files\login.csv", engine='python')
+logins = pd.read_csv("S.A.N.E. Data Files\login.csv", engine='python')
 logins = logins.values.tolist()
 
 login_okay = False
-
-# Weather API client init
-client = python_weather.Client(format=python_weather.IMPERIAL)
-
-# Dictionary for NN
-dictionary = enchant.Dict("en_US")
 
 
 # Functions
@@ -131,7 +142,7 @@ def set_password():  # Setup for the username and password process, this appends
     logins.append(user_new)
     logins.append(p_new)
     login_DF = pd.DataFrame(logins, columns=None)
-    login_DF.to_csv('S.A.N.EProject\S.A.N.E. Data Files/login.csv', index=False, columns=None, sep=',')
+    login_DF.to_csv('S.A.N.E. Data Files/login.csv', index=False, columns=None, sep=',')
     returning_user_login()
 
 
@@ -168,14 +179,54 @@ def the_jawbreaker():
                 common_values.append(value)
 
         # Prediction algorithm is a searching loop that uses reference data
-        count = 0
+        print("Predictor Run Start")
         for i in network_storage:
-            count = count + 1
-            item_count = network_storage.count()
+            print(network_storage)
             
-            if count > 2:
-                suggestion = dictionary.suggest(i)
-                speak(random.choice(suggestion))
+            if len(network_storage) > 0:
+                suggestion = PyDictionary.synonym(i)
+                print(random.choice(suggestion))
+
+
+def set_voice_gender():
+    print('Run')
+    print(settings_file_d["GENDER"])
+    if settings_file_d['GENDER'] == 'MALE':
+        settings_data = {
+                        "GENDER": "FEMALE"
+                        }
+
+        settings_file = open('S.A.N.E. Data Files\\settings.json', 'w')
+        json.dump(settings_data, settings_file)
+        print(f'Gender changed')
+        settings_file.close()
+        exit()
+
+    elif settings_file_d["GENDER"] == "FEMALE":
+        settings_data = {
+                        "GENDER": "MALE"
+                        }
+
+        settings_file = open('S.A.N.E. Data Files\\settings.json', 'w')
+        json.dump(settings_data, settings_file)
+        print(f'Gender changed')
+        settings_file.close()
+        speak("Please restart the program to utilize changes.")
+        exit()
+
+
+
+def settings_change():
+    root = tk.Tk()
+
+    root.title('S.A.N.E. Settings Configuration')
+    root.wm_iconbitmap('S.A.N.E. Icon.ico')
+
+    
+    GENDER_SELECT = tk.Button(root, text=f'Toggle Gender', bg='white', fg='black', command=set_voice_gender)
+    GENDER_SELECT.pack()
+
+    root.mainloop()
 
 
 def speak_with_user():  # Speak with user is the conversational algorithm, with limited functions, although it
@@ -492,24 +543,6 @@ def release_the_hounds():
     thread.start()
 
 
-async def weather():
-    speak('Where would you like the weather from?')
-    weather_area = r.listen(source)
-    weather_area = r.recognize_google(weather_area)
-
-    weather = await client.find(weather_area)
-    speak('The temperature is currently: ', weather.current.temperature, 'fahrenheit or about', int((weather.current.temperature-32)/1.8), 'celcius')
-    speak('Wopuld oyu like the weekly forecast?')
-    y_n = r.listen(source)
-    y_n = r.recognize_google(y_n)
-    if 'yes' in y_n:
-        for i in weather.forecast:
-            speak('On ' + str(i.day) + ' it will be ' + str(int((i.temperature-32)/1.8)) + ' celcius' + ' or about ' + str(i.temperature) + ' fahrenheit')
-    else:
-        speak('Okay')
-    await client.close()
-
-
 def calc():
     speak('Opening the calculator')
     exec(open('S.A.N.EProject\calculator.py').read())
@@ -694,7 +727,7 @@ def do_stuff():
                 exit()
 
             elif 'hibernate' in audio:
-                speak('Would oyu like me to sleep for seconds, minutes or hours?')
+                speak('Would you like me to sleep for seconds, minutes or hours?')
                 choice_time = r.listen(source)
                 choice_time = r.recognize_google(choice_time)
                 if 'seconds' in choice_time:
@@ -719,10 +752,8 @@ def do_stuff():
                     time.sleep(int((audio*3600)))
                     speak("I'm back.")
 
-
-            elif 'weather' in audio:
-                speak('One moment while we connect to the client')
-                get_event_loop().run_until_complete(weather())
+            elif 'settings' in audio:
+                settings_change()
 
             elif 'auto click' in audio:
                 speak("Please set up the auto-clicker yourself as I can not do that.")
