@@ -1,3 +1,9 @@
+## Versions
+1.0: Unstable Beta Version/Initial Release
+1.1: Stable Beta
+1.2.0: Unstable Test Beta
+1.2.1: Stable Beta (Coming Soon!)
+
 ## Hello, Welcome to S.A.N.E.
 
 Welcome to the official website for the S.A.N.E. AI. The nicknae for this AI is S.A.N.E. which stand for Semi-Artificial Neural Envoronment. this is the project i have been working on in my free time, and is also helping me to practice for the PCEP exam that I will be taking soon. As a young developer, I strive to make the best program I possibly can.
