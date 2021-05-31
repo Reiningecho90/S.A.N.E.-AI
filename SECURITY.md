@@ -4,7 +4,13 @@
 | ------- | ------------------ |
 | 1.0.0   | :x:                |
 | 1.1.0   | :white_check_mark: |
-| 1.2.0 (soon)   | :white_check_mark: |
+| 1.2.0   | :white_check_mark: |
+
+## Security Measures
+Login Credentials: Users are required to supply login credentials to use S.A.N.E. as files may contain sensitive information during use.
+Voice Encryption: Through Google's voice API, all voice commands are encrypted meaning they are safe against attacks.
+Local Hosting: All files are hosted locally meaning large scale data breaches are nearly impossible.
+Data Wiping: All data is wiped from memory on shutdown so nothing sensitive is stored in the computer files.
 
 ## Reporting a Vulnerability
 
