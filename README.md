@@ -22,6 +22,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Everything functioning properly on startup, rollout soon, about one week away (5/26/2021)
 - Wiki and READMEs updated to comply with 1.2 functions (5/28/2021)
 - Fixing major data adsence issue, identified issue and working on a fix (5/29/2021)
+- Evyerthing working properly after yesterday's issue (5/30/2021)
 
 
 SECURITY:
