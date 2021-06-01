@@ -6,7 +6,7 @@ Explore the AI and please suggest what to do next or how to improve it!
 Wiki page to learn about the project: https://github.com/Reiningecho90/S.A.N.E.-AI/wiki
 
 ANNOUNCEMENTS: 
-V1.2.0 is now live! Go download it: https://github.com/Reiningecho90/S.A.N.E.-AI/releases/tag/v1.2.0
+V1.2.1 is now live! Go download it: https://github.com/Reiningecho90/S.A.N.E.-AI/releases/tag/v1.2.1
 
 Its official! The new website hosted by GitHub is now live: https://reiningecho90.github.io/S.A.N.E.-AI/!
 
@@ -23,7 +23,8 @@ UPDATES (Find in-depth updates in the project on my page):
 - Wiki and READMEs updated to comply with 1.2 functions (5/28/2021)
 - Fixing major data adsence issue, identified issue and working on a fix (5/29/2021)
 - Evyerthing working properly after yesterday's issue (5/30/2021)
-- Updates GitHub pages website, added version history section (5/30/2021)
+- Updated GitHub pages website, added version history section (5/30/2021)
+- Go get it, v1.2.1 public release is live on the releases page! (6/1/2021)
 
 
 SECURITY:
