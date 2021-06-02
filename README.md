@@ -11,20 +11,9 @@ V1.2.1 is now live! Go download it: https://github.com/Reiningecho90/S.A.N.E.-AI
 Its official! The new website hosted by GitHub is now live: https://reiningecho90.github.io/S.A.N.E.-AI/!
 
 UPDATES (Find in-depth updates in the project on my page):
-- Purged to Update-Archive.txt (5/20/2021)
-- Working on nerual network bug that was found in late testing, hoping to release still on June 1st although development may be incrementally halted due to other projects (5/20/2021)
-- Neural network issue fixed, bug was in run cycle with VS code compared o it being in the script (5/21/2021)
-- Wokring through issues with settings script for 1.3 a bit early, 1.2 testing will be continued (5/21/2021)
-- Settings script issues fixed, testing first version then possibly rolling out with 1.2 (5/21/2021)
-- Preparing the final testing files for computer and testing functions for the v1.2.1 release soon (5/24/2021)
-- Announcemnt: Settings will most likely be released with v1.3.0 or 1.3.1 (5/24/2021)
-- Currently testing the exe file funcitons (5/25/2021)
-- Everything functioning properly on startup, rollout soon, about one week away (5/26/2021)
-- Wiki and READMEs updated to comply with 1.2 functions (5/28/2021)
-- Fixing major data adsence issue, identified issue and working on a fix (5/29/2021)
-- Evyerthing working properly after yesterday's issue (5/30/2021)
-- Updated GitHub pages website, added version history section (5/30/2021)
-- Go get it, v1.2.1 public release is live on the releases page! (6/1/2021)
+- Purged to Update-Archive.txt (6/2/2021)
+- Fixed all problems with release, existing issues were diagnosed (6/1/2021)
+
 
 
 SECURITY:
