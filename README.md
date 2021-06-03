@@ -15,6 +15,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Fixed all problems with release, existing issues were diagnosed (6/1/2021)
 - Working on settings GUI privately, should have a first testing version soon (6/2/2021)
 - Closed Beta V1.2 issue milestone as it was released yesterday (6/2/2021)
+- Working on settings GUI as of today, working through minor issues silently (6/3/2021)
 
 
 
