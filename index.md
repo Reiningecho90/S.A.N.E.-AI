@@ -2,7 +2,7 @@
 - 1.0: Unstable Beta Version/Initial Release
 - 1.1: Stable Beta
 - 1.2.0: Unstable Test Beta
-- 1.2.1: Stable Beta (Coming Soon!)
+- 1.2.1: Stable Beta
 
 ## Hello, Welcome to S.A.N.E.
 
