@@ -17,6 +17,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Closed Beta V1.2 issue milestone as it was released yesterday (6/2/2021)
 - Working on settings GUI as of today, working through minor issues silently (6/3/2021)
 - Pressing for a translation function upgrade this month, should improve the function a lot (6/3/2021)
+- Updated website to comply with release (6/3/2021)
 
 
 
