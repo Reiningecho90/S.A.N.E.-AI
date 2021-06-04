@@ -18,6 +18,8 @@ UPDATES (Find in-depth updates in the project on my page):
 - Working on settings GUI as of today, working through minor issues silently (6/3/2021)
 - Pressing for a translation function upgrade this month, should improve the function a lot (6/3/2021)
 - Updated website to comply with release (6/3/2021)
+- Finished settings GUI initial implementation (6/4/2021)
+- Moving to translate function (6/4/2021)
 
 
 
