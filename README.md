@@ -20,6 +20,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Updated website to comply with release (6/3/2021)
 - Finished settings GUI initial implementation (6/4/2021)
 - Translate function iterative translation issues have risen and will be a main focus from now on (6/6/2021)
+- Working on viability of new library for translate function (6/6/2021)
 
 
 
