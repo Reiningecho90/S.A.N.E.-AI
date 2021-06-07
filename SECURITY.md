@@ -14,5 +14,5 @@
 
 ## Reporting a Vulnerability
 
-If you need to report a vulnerability in the code, email me wiht the email on my profile, and I will do my best to respond.
+If you need to report a vulnerability in the code, email me with the email on my profile, and I will do my best to respond.
 Make sure you know where the vulnerability is before you email, it would help if every vulnerability has very refined, down to a certain line or lines of code.
