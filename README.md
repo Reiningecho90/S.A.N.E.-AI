@@ -22,6 +22,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Translate function iterative translation issues have risen and will be a main focus from now on (6/6/2021)
 - Working on viability of new library for translate function (6/6/2021)
 - Closed translate function issue (6/7/2021)
+- Wokring on a calculator redesign, new code should incorporate a tkinter GUI (6/8/2021)
 
 
 
