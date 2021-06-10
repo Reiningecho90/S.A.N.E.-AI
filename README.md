@@ -13,6 +13,7 @@ Its official! The new website hosted by GitHub is now live: https://reiningecho9
 UPDATES (Find in-depth updates in the project on my page):
 - Purged to Update-Archive.txt (6/10/2021)
 - Working on a possible email function for 1.3 or 1.4 (6/10/2021)
+- Updates will be less apparent here due to most of my coding time being allocated toward studying for the PCAP exam (6/10/2021)
 
 
 
