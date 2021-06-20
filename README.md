@@ -18,7 +18,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - The email function has to work with a local IP address, unfortunately this is too sensitive to store on a local computer and the email function development will be switched for a calendar management function. (6/14/2021)
 - Working on the UI for 1.4 as all of the patches for 1.3 are finished. If the UI is partially complete and working by 1.4 it will be a hidden feature (6/16/2021)
 - UI will include a list of function buttons that execute certain functions like the new calendar function (6/17/2021)
-
+- All functions for 1.3 are finished, all that is left is exe testing then rollout next month (6/20/2021)
 
 
 SECURITY:
