@@ -23,6 +23,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Preparing the new push worthy dev code for main branch from pushing branch (6/22/2021)
 - Pushed developer version code and pushed to correct branch, done yesterday (6/23/2021)
 - New issue was placed today, working towards a fix. Problem was identified and can be seen in the first comment on the issue named 'Translate Function not Initializing Properly' (6/23/2021)
+- All issues have been dealt with, everything is ready to push on update day (6/23/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
