@@ -20,7 +20,9 @@ UPDATES (Find in-depth updates in the project on my page):
 - UI will include a list of function buttons that execute certain functions like the new calendar function (6/17/2021)
 - All functions for 1.3 are finished, all that is left is exe testing then rollout next month (6/20/2021)
 - Finished exe move and some minor testing, the completed code will be pushed when code is final (6/22/2011)
-- Lreparing the new push worthy dev code for main branch from pushing branch (6/22/2021)
+- Preparing the new push worthy dev code for main branch from pushing branch (6/22/2021)
+- Pushed developer version code and pushed to correct branch, done yesterday (6/23/2021)
+- New issue was placed today, working towards a fix. Problem was identified and can be seen in the first comment on the issue named 'Translate Function not Initializing Properly' (6/23/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
