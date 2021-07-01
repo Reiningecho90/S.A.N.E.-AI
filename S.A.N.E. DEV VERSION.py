@@ -725,7 +725,7 @@ def do_stuff():
                 word_ants = dictionary.synonym(f"{audio}")
                 speak(word_ants)
 
-            elif 'translate' in audio:
+            elif 'translate' or 'Translate' in audio:
                 translator = Translator()
                 speak("What is a word or phrase to translate?")
                 words = r.listen(source, timeout=3)
