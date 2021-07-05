@@ -13,7 +13,7 @@ Its official! The new website hosted by GitHub is now live: https://reiningecho9
 UPDATES (Find in-depth updates in the project on my page):
 - Purged to Update-Archive.txt (7/1/2021)
 - Pushed all new code for version 1.3.1, this is thes newest update and provides needed enhancement to certain functions and capability to improve the AI (7/1/2021)
-
+- Working on the GUI for 1.4, it will not be complete and will be a static UI that's main goal is to eliminate the command line being needed (7/5/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
