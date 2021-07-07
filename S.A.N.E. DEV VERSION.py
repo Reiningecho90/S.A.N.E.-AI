@@ -1,10 +1,9 @@
-# Working on: BETA RELEASE v1.3.x
-# Finished: BETA v1.2.1
+# Working on: BETA RELEASE v1.4.0
+# Finished: BETA v1.3.1
 
 # Update Description: Adds new features and functions, seceret testing is underway for a possible gender changing method and overall settings changing method.
 
 # Future Ideas: v1.3.x could incorporate an MSI installer instead of a direct file transfer.
-
 
 
 # Imports
@@ -25,6 +24,7 @@ import pandas.errors as e
 import json
 import tkinter as tk
 from googletrans import Translator, constants
+from sys import exit
 
 # Storage initialization, works along with the jawbreaker and predictor to gather user data
 try:
@@ -70,6 +70,7 @@ login_okay = False
 username = ''
 password = ''
 
+confirm_pass = False
 
 
 # Functions
@@ -78,18 +79,122 @@ def speak(speech):
     engine.runAndWait()
 
 
+# Popup Username and Password Window
+def popup_window():
+    global confirm_pass
+    def confirm_b():
+        global confirm_pass
+
+        username_e = p_user.get()
+        password_e = p_user.get()
+
+        if username_e == username:
+            if password_e == password:
+                confirm_pass = True
+                popup.destroy()
+            else:
+                speak('incorrect password')
+        else:
+            speak("incorrect username")
+
+
+    popup = tk.Tk()
+    popup.title('Credentials Checkpoint')
+    popup.wm_iconbitmap('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.E. Icon.ico')
+    popup.wm_attributes('-alpha', 0.95)
+    popup.configure(bg='gray20')
+    popwidth, popheight = (popup.winfo_screenwidth()/4), (popup.winfo_screenheight()/4)
+    popup.geometry('%dx%d+0+0' % (popwidth, popheight))
+
+    p_user = tk.Entry(bg='gray20', fg='white')
+    p_user.pack()
+    p_user.place(x=(popwidth/2.5), y=0)
+
+    p_usrlabel = tk.Label(popup, text="Username:", bg='gray20', fg='white')
+    p_usrlabel.pack()
+    p_usrlabel.place(x=(popwidth/4), y=0)
+
+    p_pass = tk.Entry(bg='gray20', fg='white')
+    p_pass.pack()
+    p_pass.place(x=(popwidth/2.5), y=(50))
+
+    p_passlabel = tk.Label(popup, text="Password:", bg='gray20', fg='white')
+    p_passlabel.pack()
+    p_passlabel.place(x=(popwidth/4), y=50)
+
+    p_confirm = tk.Button(popup, text="Login", bg='gray20', fg='white', command=confirm_b)
+    p_confirm.pack()
+    p_confirm.place(x=(popwidth/2.05), y=75)
+
+    popup.mainloop()
+
+# Set Login Dialog
+def login_dialog():
+    def confirm_b():
+        global username
+        global password
+
+        username = set_user.get()
+        password = set_pass.get()
+
+        logins.append(username)
+        logins.append(password)
+
+    
+    set_login = tk.Tk()
+    set_login.title('Credentials Checkpoint')
+    set_login.wm_iconbitmap('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.E. Icon.ico')
+    set_login.wm_attributes('-alpha', 0.95)
+    set_login.configure(bg='gray20')
+    setlwidth, setlheight = (set_login.winfo_screenwidth()/4), (set_login.winfo_screenheight()/4)
+    set_login.geometry('%dx%d+0+0' % (setlwidth, setlheight))
+
+    set_user = tk.Entry(bg='gray20', fg='white')
+    set_user.pack()
+    set_user.place(x=(setlwidth/2.5), y=0)
+
+    set_usrlabel = tk.Label(set_login, text="Username:", bg='gray20', fg='white')
+    set_usrlabel.pack()
+    set_usrlabel.place(x=(setlwidth/4), y=0)
+
+    set_pass = tk.Entry(bg='gray20', fg='white')
+    set_pass.pack()
+    set_pass.place(x=(setlwidth/2.5), y=(50))
+
+    set_passlabel = tk.Label(set_login, text="Password:", bg='gray20', fg='white')
+    set_passlabel.pack()
+    set_passlabel.place(x=(setlwidth/4), y=50)
+
+    set_confirm = tk.Button(set_login, text="Login", bg='gray20', fg='white', command=confirm_b)
+    set_confirm.pack()
+    set_confirm.place(x=(setlwidth/2.05), y=75)
+
+    set_login.mainloop()
+
+
+
 # Next three functions initialize the entire program with a username and password
 def login__init__():
-    ask_user = str(input("Do you already have a login?(y/n): "))
-    if 'y' in ask_user:
-        returning_user_login()
-    elif 'n' in ask_user:
-        set_password()
-    elif 'y' and 'n' not in ask_user:
-        speak("Please only input 'y', or 'n'")
+    speak('do you have a login yet? Please say yes or no.')
+    while 1:
+        yes_or_no = r.listen(source)
+        yes_or_no = r.recognize_google(yes_or_no)
+        if 'yes' in yes_or_no:
+            returning_user_login()
+
+            print('got here')
+        elif 'no' in yes_or_no:
+            set_password()
+        elif 'yes' and 'no' not in yes_or_no:
+            speak("Please only say either yes or no")
 
 
 def returning_user_login():  # Login for returning users
+    global username
+    global password
+    global confirm_pass
+
+
     username = str(logins[0])
     username = username.replace(' nan nan nan nan', '')
     username = username.replace('[', '')
@@ -103,57 +208,28 @@ def returning_user_login():  # Login for returning users
     password = password.replace("'", '')
     password = password.replace(']', '')
     password = password.replace(',', '')
-    while 1:
-        speak('Input your username')
-        user_ret = input("Input your username here: ")
-        speak('Input your password')
-        password_ret = input("Input your password: ")
-        if user_ret == username:
-            speak("Username approved")
-            os.system('cls' if os.name == 'nt' else 'clear')
-        elif user_ret != username:
-            speak("Wrong username, please retry")
-            user_ret = input("Input your username here: ")
-            if user_ret == username:
-                speak("Username approved")
-                os.system('cls' if os.name == 'nt' else 'clear')  # Clears the system so username and password is
-                # hidden after the user finished the process
-                return 0
-            else:
-                speak("Sorry, your username could not be verified properly, please reload sane and retry logging in.")
-        if password_ret == password:
-            speak("Password approved, welcome back")
-            os.system('cls' if os.name == 'nt' else 'clear')
-            return 0
-        elif password_ret != password:
-            speak("Please retry password")
-            password_ret = input("Input your password: ")
-            if password_ret == password:
-                speak("Password approved")
-                os.system('cls' if os.name == 'nt' else 'clear')
-                return 0
-            else:
-                speak("Sorry, your password could not be verified properly, please reload sane and retry logging in.")
+
+    popup_window()
+
+    confirm_pass = True
+
+    if confirm_pass:
+        t1 = threading.Thread(do_stuff())
+        t1.start()
 
 
-def set_password():  # Setup for the username and password process, this appends two things to the .csv, a username
-    # and password
-    speak("Welcome to the username and password setup, please input a password that meets the requirements into the "
-          "terminal, (username first, password second):")
-    speak('Input your new username')
-    user_new = input("Enter your username: ")
-    speak('Input your new password')
-    p_new = input("Enter your password (preferably greater than 8 characters including capitals, numbers and "
-                  "special characters for security: ")
-    logins.append(user_new)
-    logins.append(p_new)
+def set_password():  # Setup for the username and password process, this appends two things to the .csv, a username and password
+    login_dialog()
+
     login_DF = pd.DataFrame(logins, columns=None)
-    login_DF.to_csv('C:/Users/Reinier/PycharmProjects/GitHub Projects/S.A.N.EProject/S.A.N.E. Data Files/login.csv', index=False, columns=None, sep=',')
+    login_DF.to_csv('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.E. Data Files\\login.csv', index=False, columns=None, sep=',')
+
     returning_user_login()
 
 
 def the_jawbreaker():
     inp_count = 0
+
     while True:
         for i in data_storing:
             if i not in secondary_storage:
@@ -193,55 +269,59 @@ def the_jawbreaker():
                 print(random.choice(suggestion))
 
 
-def set_voice_gender():
-    print(settings_file_d["GENDER"])
-    if settings_file_d['GENDER'] == 'MALE':
-        settings_data = {
-                        "GENDER": "FEMALE",
-                        "PRONOUNS": settings_file_d["PRONOUNS"]
-                        }
-
-        settings_file = open('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.E. Data Files\\settings.json', 'w')
-        json.dump(settings_data, settings_file)
-        speak('Gender changed')
-        settings_file.close()
-        exit()
-
-    elif settings_file_d["GENDER"] == "FEMALE":
-        settings_data = {
-                        "GENDER": "MALE",
-                        "PRONOUNS": settings_file_d["PRONOUNS"]
-                        }
-
-        settings_file = open('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.E. Data Files\\settings.json', 'w')
-        json.dump(settings_data, settings_file)
-        speak('Gender changed')
-        settings_file.close()
-        speak("Please restart the program to utilize changes.")
-        exit()
-
-
-def set_pronouns():
-    pronouns = PRONOUN_SELECT.get('1.0', END)
-    pronouns = pronouns.replace('\n', '')
-
-    settings_data = {
-                    "GENDER": settings_file_d["GENDER"],
-                    "PRONOUNS": pronouns
-                    }
-    
-    settings_file = open('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.E. Data Files\\settings.json', 'w')
-    json.dump(settings_data, settings_file)
-    print(f'Prefered pronouns changed')
-    settings_file.close()
-
-
 def confirm_settings():
     exit()
 
 
 def settings_change():
     speak("Please enter your password to access the settings")
+
+
+    def set_voice_gender():
+        print(settings_file_d["GENDER"])
+        if settings_file_d['GENDER'] == 'MALE':
+            settings_data = {
+                            "GENDER": "FEMALE",
+                            "PRONOUNS": settings_file_d["PRONOUNS"]
+                            }
+
+            settings_file = open('S.A.N.E. Data Files\\settings.json', 'w')
+            json.dump(settings_data, settings_file)
+            speak('Gender changed')
+            settings_file.close()
+            exit()
+
+        elif settings_file_d["GENDER"] == "FEMALE":
+            settings_data = {
+                            "GENDER": "MALE",
+                            "PRONOUNS": settings_file_d["PRONOUNS"]
+                            }
+
+            settings_file = open('S.A.N.E. Data Files\\settings.json', 'w')
+            json.dump(settings_data, settings_file)
+            speak('Gender changed')
+            settings_file.close()
+            speak("Please restart the program to utilize changes.")
+            exit()
+
+
+    def set_pronouns():
+        pronouns = PRONOUN_SELECT.get('1.0', END)
+        pronouns = pronouns.replace('\n', '')
+
+        settings_data = {
+                        "GENDER": settings_file_d["GENDER"],
+                        "PRONOUNS": pronouns
+                        }
+        
+        settings_file = open('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.E. Data Files\\settings.json', 'w')
+        json.dump(settings_data, settings_file)
+        print(f'Prefered pronouns changed')
+        settings_file.close()
+
+
+    # Tkinter settings window
+    root = tk.Tk()
 
     while 1:
         speak('Input your password')
@@ -263,7 +343,20 @@ def settings_change():
             else:
                 speak("Sorry, your password could not be verified properly, this feature is inaccessible.")
 
-    
+    root.title('S.A.N.E. Settings Configuration')
+    root.wm_iconbitmap('S.A.N.E. Icon.ico')
+
+
+    VOICE_GENDER_SELECT = tk.Button(root, text=f'Toggle Gender', bg='white', fg='black', command=set_voice_gender)
+    VOICE_GENDER_SELECT.pack()
+
+    PRONOUN_SELECT = tk.Text(root, bg='white', fg='black')
+    PRONOUN_SELECT.pack()
+    PRONOUN_SELECT_B = tk.Button(root, text=f'Confirm Pronouns', bg='white', fg='black', command=set_pronouns)
+    PRONOUN_SELECT_B.pack()
+
+    CONFIRM_SETTINGS = tk.Button(root, text=f'Confirm Settings', bg='white', fg='black', command=confirm_settings)
+    CONFIRM_SETTINGS.pack()
 
 
 def speak_with_user():  # Speak with user is the conversational algorithm, with limited functions, although it
@@ -271,19 +364,20 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
     speak("Sane friendly mode is in beta, if any features should be included or any bugs are prominent please report "
           "to the developer of Sane.")
     speak("How is your day today?")
-    response = r.listen(source, timeout=3)
+    response = r.listen(source)
     response = r.recognize_google(response)
+    response = response.lower()
 
     while 1:
         if 'good' or 'great' or 'amazing' or 'really good' in response:
             responses = ['What makes your day good?', 'Did you do anything cool?', 'What fun activities did you do '
                                                                                    'today?']
             speak(random.choice(responses))
-            response = r.listen(source, timeout=3)
+            response = r.listen(source)
             response = r.recognize_google(response)
             primary_storing.add(response)
             speak("That's great, do you have any other plans today?")
-            response = r.listen(source, timeout=3)
+            response = r.listen(source)
             response = r.recognize_google(response)
 
             if 'no' or 'nah' in response:
@@ -297,21 +391,21 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
 
             elif 'yes' in response:
                 speak("Nice, although if you said what you are doing I'm not sure I heard")
-                response = r.listen(source, timeout=3)
+                response = r.listen(source)
                 response = r.recognize_google(response)
                 primary_storing.add(response)
                 time.sleep(0.5)
                 speak("Nice do you want any help with that?")
-                response = r.listen(source, timeout=3)
+                response = r.listen(source)
                 response = r.recognize_google(response)
                 if 'yes' or 'ok' in response:
                     speak("would you like me to define a word, Wiki search or anything?")
-                    response = r.listen(source, timeout=3)
+                    response = r.listen(source)
                     response = r.recognize_google(response)
 
-                    if 'Wiki' in response:
+                    if 'wiki' in response:
                         speak('What would you like to search?')
-                        audio = r.listen(source, timeout=3)
+                        audio = r.listen(source)
                         audio = r.recognize_google(audio)
                         speak("Your results are being processed now.")
                         answer = wikipedia.summary(audio, sentences=5)
@@ -323,9 +417,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                             else:
                                 continue
 
-                    elif 'Define' in response:
+                    elif 'define' in response:
                         speak("What is your word?")
-                        audio = r.listen(source, timeout=3)
+                        audio = r.listen(source)
                         audio = r.recognize_google(audio)
                         word_def = PyDictionary.meaning(f"{audio}")
                         speak(word_def)
@@ -344,11 +438,11 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                                                                                             'are '
                                                                                             'you just in a down mood?']
             speak(random.choice(responses))
-            response = r.listen(source, timeout=3)
+            response = r.listen(source)
             response = r.recognize_google(response)
             primary_storing.add(response)
             speak("That's not that great, what about later today? Any plans then?")
-            response = r.listen(source, timeout=3)
+            response = r.listen(source)
             response = r.recognize_google(response)
             if 'no' in response:
                 speak("Okay I'll be here if you need me for anything")
@@ -361,21 +455,21 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
 
             if 'yes' in response:
                 speak("Nice, although if you said what you are doing I'm not sure I heard")
-                response = r.listen(source, timeout=3)
+                response = r.listen(source)
                 response = r.recognize_google(response)
                 primary_storing.add(response)
                 speak("Okay, would you like help with that or should I stay quiet?")
-                response = r.listen(source, timeout=3)
+                response = r.listen(source)
                 response = r.recognize_google(response)
 
                 if 'help' in response:
                     speak("How would you like me to help?")
-                    response = r.listen(source, timeout=3)
+                    response = r.listen(source)
                     response = r.recognize_google(response)
 
-                    if 'Wiki' in response:
+                    if 'wiki' in response:
                         speak('What would you like to search?')
-                        audio = r.listen(source, timeout=3)
+                        audio = r.listen(source)
                         audio = r.recognize_google(audio)
                         search_list.add(audio)
                         speak("Your results are being processed now, .")
@@ -388,9 +482,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                             else:
                                 continue
 
-                    elif 'Define' in response:
+                    elif 'define' in response:
                         speak("What is your word?")
-                        audio = r.listen(source, timeout=3)
+                        audio = r.listen(source)
                         audio = r.recognize_google(audio)
                         word_def = PyDictionary.meaning(f"{audio}")
                         speak(word_def)
@@ -403,7 +497,7 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
 
                     elif 'synonym' in response:
                         speak("What is your word?")
-                        audio = r.listen(source, timeout=3)
+                        audio = r.listen(source)
                         audio = r.recognize_google(audio)
                         word_syn = PyDictionary.synonym(f"{audio}")
                         speak(word_syn)
@@ -416,7 +510,7 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
 
                     elif 'antonym' in response:
                         speak("What is your word?")
-                        audio = r.listen(source, timeout=3)
+                        audio = r.listen(source)
                         audio = r.recognize_google(audio)
                         word_ants = PyDictionary.synonym(f"{audio}")
                         speak(word_ants)
@@ -430,14 +524,14 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                     elif 'translate' in response:
                         translator = Translator()
                         speak("What is a word or phrase to translate?")
-                        words = r.listen(source, timeout=3)
+                        words = r.listen(source)
                         words = r.recognize_google(words)
                         speak('What language would you like to have the words translated to (two letters, codes '
                               'can be '
                               'found in terminal)')
                         print("Spanish: es, English: en, french: fr, German: de, Italian: it, Japanese: ja, Korean: ko "
                               "(others can be found here: https://cloud.google.com/translate/docs/languages)")
-                        language = r.listen(source, timeout=3)
+                        language = r.listen(source)
                         language = r.recognize_google(language)
                         lower_lang = language.lower()
                         translated = translator.translate(words, dest=f'{lower_lang}')
@@ -463,30 +557,30 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
             responses = ['Why is your day just fine?', 'Did you do anything today?', 'How did you go about your day '
                                                                                      'today?']
             speak(random.choice(responses))
-            response = r.listen(source, timeout=3)
+            response = r.listen(source)
             response = r.recognize_google(response)
             primary_storing.add(response)
             speak("That's alright")
             speak("Are you working on any projects, work, school work I can help you with?")
-            response = r.listen(source, timeout=3)
+            response = r.listen(source)
             response = r.recognize_google(response)
 
             if 'yes' in response:
                 speak("Nice, although if you said what you are doing I'm not sure I heard")
-                response = r.listen(source, timeout=3)
+                response = r.listen(source)
                 response = r.recognize_google(response)
                 primary_storing.add(response)
                 speak("Okay, would you like help with that or should I stay quiet?")
-                response = r.listen(source, timeout=3)
+                response = r.listen(source)
                 response = r.recognize_google(response)
 
                 if 'help' in response:
                     speak("How would you like me to help?")
-                    response = r.listen(source, timeout=3)
+                    response = r.listen(source)
                     response = r.recognize_google(response)
-                    if 'Wiki' in response:
+                    if 'wiki' in response:
                         speak('What would you like to search?')
-                        audio = r.listen(source, timeout=3)
+                        audio = r.listen(source)
                         audio = r.recognize_google(audio)
                         search_list.add(audio)
                         speak("Your results are being processed now, .")
@@ -499,9 +593,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                             else:
                                 continue
 
-                    elif 'Define' in response:
+                    elif 'define' in response:
                         speak("What is your word?")
-                        audio = r.listen(source, timeout=3)
+                        audio = r.listen(source)
                         audio = r.recognize_google(audio)
                         word_def = PyDictionary.meaning(f"{audio}")
                         speak(word_def)
@@ -514,7 +608,7 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
 
                     elif 'synonym' in response:
                         speak("What is your word?")
-                        audio = r.listen(source, timeout=3)
+                        audio = r.listen(source)
                         audio = r.recognize_google(audio)
                         word_syn = PyDictionary.synonym(f"{audio}")
                         speak(word_syn)
@@ -527,7 +621,7 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
 
                     elif 'antonym' in response:
                         speak("What is your word?")
-                        audio = r.listen(source, timeout=3)
+                        audio = r.listen(source)
                         audio = r.recognize_google(audio)
                         word_ants = PyDictionary.synonym(f"{audio}")
                         speak(word_ants)
@@ -541,14 +635,14 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                     elif 'translate' in response:
                         translator = Translator()
                         speak("What is a word or phrase to translate?")
-                        words = r.listen(source, timeout=3)
+                        words = r.listen(source)
                         words = r.recognize_google(words)
                         speak('What language would you like to have the words translated to (two letters, codes '
                               'can be '
                               'found in terminal)')
                         print("Spanish: es, English: en, french: fr, German: de, Italian: it, Japanese: ja, Korean: ko "
                               "(others can be found here: https://cloud.google.com/translate/docs/languages)")
-                        language = r.listen(source, timeout=3)
+                        language = r.listen(source)
                         language = r.recognize_google(language)
                         lower_lang = language.lower()
                         translated = translator.translate(words, dest=f'{lower_lang}')
@@ -586,17 +680,17 @@ def release_the_hounds():
 
 def calc():
     speak('Opening the calculator')
-    exec(open('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.EProject\calculator.py').read())
+    exec(open('calculator.py').read())
 
 
 def afk_move():
     speak('Opening the AFK database')
-    exec(open('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.EProject\movement.py').read())
+    exec(open('movement.py').read())
 
 
 def auto_click():
     speak('Opening the autoclicker')
-    exec(open('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.EProject\\autoclicker.py').read())
+    exec(open('autoclicker.py').read())
 
 
 def bluetooth_feedback():
@@ -611,7 +705,7 @@ def bluetooth_feedback():
             return True
         else:
             speak('Okay, thank you for considering!')
-            return False
+            exit()
 
 
 def do_stuff():
@@ -619,11 +713,48 @@ def do_stuff():
     dictionary = PyDictionary()
     unknown_count = 0
 
-    while 1:
 
+    # Main Window and UI Elements
+    def exit():
+        root.destroy()
+
+    root = tk.Tk()
+    root.title("S.A.N.E., Your Open-Source Personal Assistant")
+    root.wm_iconbitmap('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.E. Icon.ico')
+    root.wm_attributes('-alpha', 0.95)
+    root.configure(bg='gray20')
+    width, height = root.winfo_screenwidth(), root.winfo_screenheight()
+    root.geometry('%dx%d+0+0' % (width,height))
+
+    logo = tk.PhotoImage(file='C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\sanelogo.png')
+    logo_labl = tk.Label(root, image=logo, bg='gray20')
+    logo_labl.pack()
+    logo_labl.place(x=(width/2.5), y=(height/5))
+
+    welcome_SC = tk.Label(root, text='Hello, Welcome to S.A.N.E.', width=25, height=3, bg='gray20', fg='white', font=('Helvetica', 14))
+    welcome_SC.pack()
+    welcome_SC.place(x=(width/2.35), y=0)
+
+    funcs = tk.Label(root, text='Functions with Push Command:', width=25, height=3, bg='gray20', fg='white', font=('Helvetica', 14))
+    funcs.pack()
+    funcs.place(x=0, y=40)
+
+    settings_func = tk.Button(root, text='Calendar', width=10, height=2, bg='gray20', fg='white', font=('Helvetica', 12), command=None) 
+    settings_func.pack()
+    settings_func.place(x=5, y=100)
+
+    exit_b = tk.Button(root, text=('Log Off'), width=10, height=2, bg='gray20', fg='red', font=('Helvetica', 12), command=exit)
+    exit_b.pack()
+    exit_b.place(x=(width-100), y=(height-50))
+
+    while 1:
+        
         try:
+            root.update()
+
             audio = r.listen(source)  # Initially listening to the source mic
             audio = r.recognize_google(audio)  # Initially Recognizing the given string values
+            audio = audio.lower()
 
             if 'you there' in audio:  # All of these functions are self explanatory
                 speak("At your service")
@@ -634,7 +765,7 @@ def do_stuff():
 
             elif 'open a new' in audio:
                 speak("What would you like to open?")
-                audio = r.listen(source, timeout=3)
+                audio = r.listen(source)
                 audio = r.recognize_google(audio)
                 webbrowser.get(chrome_path).open(audio + ".com")
                 speak("Tab opened ")
@@ -654,18 +785,18 @@ def do_stuff():
 
             elif 'user manual' in audio:
                 speak("I am Sane, "
-                      "the semi-artificial nerd environment, "
+                      "the semi-artificial neural environment, "
                       "your friendly, self aware virtual assistant! I have been programmed to,"
                       "open tabs, search Wiki, check the time, sing horribly etc.")
                 speak("Any further questions?")
-                audio = r.listen(source, timeout=3)
+                audio = r.listen(source)
                 audio = r.recognize_google(audio)
                 if 'no' in audio:
                     speak("Okay")
                 elif 'explain' in audio:
                     speak("I can not explain a single function but the extended manual is on your screen now, "
                           "would you like me to read it for you?.")
-                    audio = r.listen(source, timeout=3)
+                    audio = r.listen(source)
                     audio = r.recognize_google(audio)
 
                     if 'no' in audio:
@@ -685,7 +816,7 @@ def do_stuff():
                               "Wiki: Searches Wikipedia for anything you tell S.A.N.E. to search after the prompt."
                               "Power Off: S.A.N.E. refuses to power off unless you give him a death threat, "
                               "which then causes him to cripple into an exit code. "
-                              "Hibernate: S.A.N.E. Powers off for a given amount of seconds, "
+                              "Hibernate: S.A.N.E. powers off for a given amount of seconds, "
                               "if you can not calculate the number of seconds ask S.A.N.E. for minutes and he will do "
                               "the calculation. "
                               "Auto Click: Starts the auto-clicker for any game that requires cheating."
@@ -695,52 +826,41 @@ def do_stuff():
                               "Thank you for being patient with S.A.N.E, he's about as slow as it gets..."
                               "Hey, that last part isn't true!")
 
-            elif 'Wiki' in audio:
+            elif 'wiki' in audio:
                 speak('What would you like to search?')
-                audio = r.listen(source, timeout=3)
+                audio = r.listen(source)
                 audio = r.recognize_google(audio)
                 search_list.append(audio)
-                speak("Your results are being processed now.")
-                answer = wikipedia.summary(audio, sentences=5)
-                speak(answer)
+                try:
+                    speak("Your results are being processed now.")
+                    answer = wikipedia.summary(audio, sentences=5)
+                    speak(answer)
+                except wikipedia.exceptions.PageError:
+                    speak('We could not find that page, please input your search into the search bar')
+                    answer = input("What would you like to search: ")
+                    answer = wikipedia.summary(answer, sentences = 5)
+                    speak('Sorry for the inconvinience')
 
-            elif 'Define' in audio:
+            elif 'define' in audio:
                 speak("What is your word?")
-                audio = r.listen(source, timeout=3)
+                audio = r.listen(source)
                 audio = r.recognize_google(audio)
                 word_def = dictionary.meaning(f"{audio}")
                 speak(word_def)
 
             elif 'synonym' in audio:
                 speak("What is your word?")
-                audio = r.listen(source, timeout=3)
+                audio = r.listen(source)
                 audio = r.recognize_google(audio)
                 word_syn = dictionary.synonym(f"{audio}")
                 speak(word_syn)
 
             elif 'antonym' in audio:
                 speak("What is your word?")
-                audio = r.listen(source, timeout=3)
+                audio = r.listen(source)
                 audio = r.recognize_google(audio)
                 word_ants = dictionary.synonym(f"{audio}")
                 speak(word_ants)
-
-            elif 'translate' or 'Translate' in audio:
-                translator = Translator()
-                speak("What is a word or phrase to translate?")
-                words = r.listen(source, timeout=3)
-                words = r.recognize_google(words)
-                speak('What language would you like to have the words translated to (two letters, codes '
-                        'can be '
-                        'found in terminal)')
-                print("Spanish: es, English: en, french: fr, German: de, Italian: it, Japanese: ja, Korean: ko "
-                        "(others can be found here: https://cloud.google.com/translate/docs/languages)")
-                language = r.listen(source, timeout=3)
-                language = r.recognize_google(language)
-                lower_lang = language.lower()
-                translated = translator.translate(words, dest=f'{lower_lang}')
-
-                speak(translated.text)
 
             elif 'calculator' in audio:
                 speak("Opening the calculator in one second...")
@@ -765,7 +885,7 @@ def do_stuff():
                     exp = input('How was your experience? ')
 
                 else:
-                    continue
+                    exit()
 
                 speak("Powering off, have a good day.")
                 exit()
@@ -776,21 +896,23 @@ def do_stuff():
                 choice_time = r.recognize_google(choice_time)
                 if 'seconds' in choice_time:
                     speak("Okay how many seconds should I sleep?")
-                    audio = r.listen(source, timeout=3)
+                    audio = r.listen(source)
                     audio = r.recognize_google(audio)
                     speak(f"going down for {audio} seconds.")
                     time.sleep(int(audio))
                     speak("I'm back .")
+                
                 elif 'minutes' in choice_time:
                     speak("Okay how many minutes should I sleep?")
-                    audio = r.listen(source, timeout=3)
+                    audio = r.listen(source)
                     audio = r.recognize_google(audio)
                     speak(f"going down for {audio} minutes.")
                     time.sleep(int(audio*60))
                     speak("I'm back .")
+                
                 elif 'hours' in choice_time:
                     speak("Okay how many hours should I sleep?")
-                    audio = r.listen(source, timeout=3)
+                    audio = r.listen(source)
                     audio = r.recognize_google(audio)
                     speak(f"going down for {audio} hours.")
                     time.sleep(int((audio*3600)))
@@ -799,6 +921,22 @@ def do_stuff():
             elif 'settings' in audio:
                 settings_change()
 
+            elif 'translate' or 'Translate' in audio:
+                translator = Translator()
+                speak("What is a word or phrase to translate?")
+                words = r.listen(source)
+                words = r.recognize_google(words)
+                speak('What language would you like to have the words translated to (two letters, codes '
+                        'can be '
+                        'found in terminal)')
+                print("Spanish: es, English: en, french: fr, German: de, Italian: it, Japanese: ja, Korean: ko "
+                        "(others can be found here: https://cloud.google.com/translate/docs/languages)")
+                language = r.listen(source)
+                language = r.recognize_google(language)
+                lower_lang = language.lower()
+                translated = translator.translate(words, dest=f'{lower_lang}')
+
+                speak(translated.text)
             elif 'auto click' in audio:
                 speak("Please set up the auto-clicker yourself as I can not do that.")
                 auto_click()
@@ -809,6 +947,8 @@ def do_stuff():
                 speak("Please initiate the algorithm yourself as I can not do that")
                 t2 = threading.Thread(afk_move())
                 t2.start()
+
+            
         
         # Built-in errors for the speech-recognition library, as well as NN initialization
         except sr.UnknownValueError: 
@@ -838,25 +978,3 @@ with mic as source:  # Kinda like a main program but super short, most of the go
     speak("Hello, welcome to sane, please input your password.")
     if not login_okay:
         login__init__()  # Initializes the login process
-
-    # Tkinter settings window
-    root = tk.Tk()
-
-    root.title('S.A.N.E. Settings Configuration')
-    root.wm_iconbitmap('C:\\Users\\Reinier\\PycharmProjects\\GitHub Projects\\S.A.N.EProject\\S.A.N.E. Icon.ico')
-
-
-    VOICE_GENDER_SELECT = tk.Button(root, text=f'Toggle Gender', bg='white', fg='black', command=set_voice_gender)
-    VOICE_GENDER_SELECT.pack()
-
-    PRONOUN_SELECT = tk.Text(root, bg='white', fg='black')
-    PRONOUN_SELECT.pack()
-    PRONOUN_SELECT_B = tk.Button(root, text=f'Confirm Pronouns', bg='white', fg='black', command=set_pronouns)
-    PRONOUN_SELECT_B.pack()
-
-    CONFIRM_SETTINGS = tk.Button(root, text=f'Confirm Settings', bg='white', fg='black', command=confirm_settings)
-    CONFIRM_SETTINGS.pack()
-
-
-    t1 = threading.Thread(do_stuff())
-    t1.start()
