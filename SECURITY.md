@@ -5,7 +5,7 @@
 | 1.0.0   | :x:                |
 | 1.1.0   | :white_check_mark: |
 | 1.2.0   | :white_check_mark: |
-| 1.3.0 (Soon)   | 🔜 
+| 1.3.0   | :white_check_mark: |
 
 ## Security Measures
 - Login Credentials: Users are required to supply login credentials to use S.A.N.E. as files may contain sensitive information during use.
