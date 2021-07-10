@@ -17,6 +17,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Added the first GUI implementation to the code, positng the dev build son so people can test. Issues foundwill be posted in the issues section (7/7/2021)
 - New code is posted to both branches, Dev version in PC-Source-Code and Gui test script in Testing-Scripts (7/7/2021)
 - Added a small fix for the GUI, it uses the update command instead of main loop at the end of try loops (7/8/2021)
+- Projects on hold for this week, vacation until next Sunday (7/10/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
