@@ -128,6 +128,7 @@ def popup_window():
 
     popup.mainloop()
 
+
 # Set Login Dialog
 def login_dialog():
     def confirm_b():
@@ -170,7 +171,6 @@ def login_dialog():
     set_confirm.place(x=(setlwidth/2.05), y=75)
 
     set_login.mainloop()
-
 
 
 # Next three functions initialize the entire program with a username and password
@@ -321,41 +321,28 @@ def settings_change():
 
 
     # Tkinter settings window
-    root = tk.Tk()
+    set_win = tk.Tk()
 
     while 1:
-        speak('Input your password')
-        password_ret = input("Input your password: ")
 
-        if password_ret == password:
-            speak("Password approved")
-            os.system('cls' if os.name == 'nt' else 'clear')
-            root.mainloop()
-            return 0
-        elif password_ret != password:
-            speak("Please retry password")
-            password_ret = input("Input your password: ")
-            if password_ret == password:
-                speak("Password approved")
-                os.system('cls' if os.name == 'nt' else 'clear')
-                root.mainloop()
-                return 0
-            else:
-                speak("Sorry, your password could not be verified properly, this feature is inaccessible.")
+        popup_window()
 
-    root.title('S.A.N.E. Settings Configuration')
-    root.wm_iconbitmap('S.A.N.E. Icon.ico')
+        if confirm_pass:
+            set_win.mainloop()
+
+    set_win.title('S.A.N.E. Settings Configuration')
+    set_win.wm_iconbitmap('S.A.N.E. Icon.ico')
 
 
-    VOICE_GENDER_SELECT = tk.Button(root, text=f'Toggle Gender', bg='white', fg='black', command=set_voice_gender)
+    VOICE_GENDER_SELECT = tk.Button(set_win, text=f'Toggle Gender', bg='white', fg='black', command=set_voice_gender)
     VOICE_GENDER_SELECT.pack()
 
-    PRONOUN_SELECT = tk.Text(root, bg='white', fg='black')
+    PRONOUN_SELECT = tk.Text(set_win, bg='white', fg='black')
     PRONOUN_SELECT.pack()
-    PRONOUN_SELECT_B = tk.Button(root, text=f'Confirm Pronouns', bg='white', fg='black', command=set_pronouns)
+    PRONOUN_SELECT_B = tk.Button(set_win, text=f'Confirm Pronouns', bg='white', fg='black', command=set_pronouns)
     PRONOUN_SELECT_B.pack()
 
-    CONFIRM_SETTINGS = tk.Button(root, text=f'Confirm Settings', bg='white', fg='black', command=confirm_settings)
+    CONFIRM_SETTINGS = tk.Button(set_win, text=f'Confirm Settings', bg='white', fg='black', command=confirm_settings)
     CONFIRM_SETTINGS.pack()
 
 
@@ -375,7 +362,7 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
             speak(random.choice(responses))
             response = r.listen(source)
             response = r.recognize_google(response)
-            primary_storing.add(response)
+            primary_storing.append(response)
             speak("That's great, do you have any other plans today?")
             response = r.listen(source)
             response = r.recognize_google(response)
@@ -383,8 +370,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
             if 'no' or 'nah' in response:
                 speak("Fair enough I'll be here in case you need me.")
                 while 1:
-                    y_n = input("Exit Friendly Mode?: ")
-                    if y_n == 'y':
+                    yes_or_no = r.listen(source)
+                    yes_or_no = r.recognize_google(yes_or_no)
+                    if 'yes' in yes_or_no:
                         exit(do_stuff())
                     else:
                         continue
@@ -393,7 +381,7 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                 speak("Nice, although if you said what you are doing I'm not sure I heard")
                 response = r.listen(source)
                 response = r.recognize_google(response)
-                primary_storing.add(response)
+                primary_storing.append(response)
                 time.sleep(0.5)
                 speak("Nice do you want any help with that?")
                 response = r.listen(source)
@@ -411,8 +399,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                         answer = wikipedia.summary(audio, sentences=5)
                         speak(answer)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -424,8 +413,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                         word_def = PyDictionary.meaning(f"{audio}")
                         speak(word_def)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -447,8 +437,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
             if 'no' in response:
                 speak("Okay I'll be here if you need me for anything")
                 while 1:
-                    y_n = input("Exit Friendly Mode?: ")
-                    if y_n == 'y':
+                    yes_or_no = r.listen(source)
+                    yes_or_no = r.recognize_google(yes_or_no)
+                    if 'yes' in yes_or_no:
                         exit(do_stuff())
                     else:
                         continue
@@ -476,8 +467,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                         answer = wikipedia.summary(audio, sentences=5)
                         speak(answer)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -489,8 +481,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                         word_def = PyDictionary.meaning(f"{audio}")
                         speak(word_def)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -502,8 +495,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                         word_syn = PyDictionary.synonym(f"{audio}")
                         speak(word_syn)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -515,8 +509,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                         word_ants = PyDictionary.synonym(f"{audio}")
                         speak(word_ants)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -538,8 +533,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
 
                         speak(translated.text)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -547,8 +543,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                     elif 'no' in response:
                         speak("Alright, I'll be on standby just in case")
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -559,7 +556,7 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
             speak(random.choice(responses))
             response = r.listen(source)
             response = r.recognize_google(response)
-            primary_storing.add(response)
+            primary_storing.append(response)
             speak("That's alright")
             speak("Are you working on any projects, work, school work I can help you with?")
             response = r.listen(source)
@@ -569,7 +566,7 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                 speak("Nice, although if you said what you are doing I'm not sure I heard")
                 response = r.listen(source)
                 response = r.recognize_google(response)
-                primary_storing.add(response)
+                primary_storing.append(response)
                 speak("Okay, would you like help with that or should I stay quiet?")
                 response = r.listen(source)
                 response = r.recognize_google(response)
@@ -582,13 +579,14 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                         speak('What would you like to search?')
                         audio = r.listen(source)
                         audio = r.recognize_google(audio)
-                        search_list.add(audio)
+                        search_list.append(audio)
                         speak("Your results are being processed now, .")
                         answer = wikipedia.summary(audio, sentences=5)
                         speak(answer)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -600,8 +598,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                         word_def = PyDictionary.meaning(f"{audio}")
                         speak(word_def)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -613,8 +612,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                         word_syn = PyDictionary.synonym(f"{audio}")
                         speak(word_syn)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -626,8 +626,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                         word_ants = PyDictionary.synonym(f"{audio}")
                         speak(word_ants)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -649,8 +650,9 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
 
                         speak(translated.text)
                         while 1:
-                            y_n = input("Exit Friendly Mode?: ")
-                            if y_n == 'y':
+                            yes_or_no = r.listen(source)
+                            yes_or_no = r.recognize_google(yes_or_no)
+                            if 'yes' in yes_or_no:
                                 exit(do_stuff())
                             else:
                                 continue
@@ -658,16 +660,18 @@ def speak_with_user():  # Speak with user is the conversational algorithm, with 
                 elif 'no' in response:
                     speak("Alright, I'll be on standby just in case")
                     while 1:
-                        y_n = input("Exit Friendly Mode?: ")
-                        if y_n == 'y':
+                        yes_or_no = r.listen(source)
+                        yes_or_no = r.recognize_google(yes_or_no)
+                        if 'yes' in yes_or_no:
                             exit(do_stuff())
                         else:
                             continue
             elif 'no' or 'not' in response:
                 speak("Okay I'll be here to help if you need me")
                 while 1:
-                    y_n = input("Exit Friendly Mode?(y/n): ")
-                    if y_n == 'y':
+                    yes_or_no = r.listen(source)
+                    yes_or_no = r.recognize_google(yes_or_no)
+                    if 'yes' in yes_or_no:
                         exit(do_stuff())
                     else:
                         continue
@@ -699,7 +703,8 @@ def bluetooth_feedback():
     audio = r.recognize_google(audio)
     if 'yes' or 'yeah' in audio:
         speak('We would like to know how the experience is with bluetooth.')
-        response = input('Would you like to give user input later?')
+        response = r.listen(source)
+        response = r.recognize_google(response)
         if str(response.lower()) == 'yes':
             speak('I will ask for your feedback after this session, thank you.')
             return True
@@ -717,6 +722,11 @@ def do_stuff():
     # Main Window and UI Elements
     def exit():
         root.destroy()
+
+
+    def update_main():
+        root.update()
+
 
     root = tk.Tk()
     root.title("S.A.N.E., Your Open-Source Personal Assistant")
@@ -739,18 +749,19 @@ def do_stuff():
     funcs.pack()
     funcs.place(x=0, y=40)
 
-    settings_func = tk.Button(root, text='Calendar', width=10, height=2, bg='gray20', fg='white', font=('Helvetica', 12), command=None) 
+    settings_func = tk.Button(root, text='Settings', width=10, height=2, bg='gray20', fg='white', font=('Helvetica', 12), command=settings_change) 
     settings_func.pack()
     settings_func.place(x=5, y=100)
 
     exit_b = tk.Button(root, text=('Log Off'), width=10, height=2, bg='gray20', fg='red', font=('Helvetica', 12), command=exit)
     exit_b.pack()
-    exit_b.place(x=(width-100), y=(height-50))
+    exit_b.place(x=(width-100), y=(height-100))
 
     while 1:
         
         try:
-            root.update()
+            t5 = threading.Thread(update_main())
+            t5.start()
 
             audio = r.listen(source)  # Initially listening to the source mic
             audio = r.recognize_google(audio)  # Initially Recognizing the given string values
@@ -758,23 +769,24 @@ def do_stuff():
 
             if 'you there' in audio:  # All of these functions are self explanatory
                 speak("At your service")
-
-            elif 'friendly mode' in audio: # See lines 170-476 for the script
+                
+            
+            if 'friendly mode' in audio: # See lines 170-476 for the script
                 t3 = threading.Thread(release_the_hounds())
                 t3.start()
-
-            elif 'open a new' in audio:
+            
+            if 'open a new' in audio:
                 speak("What would you like to open?")
                 audio = r.listen(source)
                 audio = r.recognize_google(audio)
                 webbrowser.get(chrome_path).open(audio + ".com")
                 speak("Tab opened ")
-
-            elif 'time' in audio:
+            
+            if 'time' in audio:
                 strTime = datetime.datetime.now().strftime("%H:%M:%S")
                 speak(f", the time is {strTime}")
-
-            elif 'sicko mode' in audio:
+            
+            if 'sicko mode' in audio:
                 speak("Astro, yeah Sun is down, freezing' cold, That's how we already know, winter's here, "
                       "My dog would "
                       "probably do it for a Louis belt, "
@@ -782,8 +794,8 @@ def do_stuff():
                       "I tried to "
                       "show 'em, yeah, I tried to show 'em, yeah, yeah, Yeah, yea yeah, Gone on you with the pick and "
                       "roll Yeah Sane, he in sicko mode")
-
-            elif 'user manual' in audio:
+            
+            if 'user manual' in audio:
                 speak("I am Sane, "
                       "the semi-artificial neural environment, "
                       "your friendly, self aware virtual assistant! I have been programmed to,"
@@ -825,8 +837,8 @@ def do_stuff():
                               "Define: Defines a word that you are prompted to tell S.A.N.E."
                               "Thank you for being patient with S.A.N.E, he's about as slow as it gets..."
                               "Hey, that last part isn't true!")
-
-            elif 'wiki' in audio:
+            
+            if 'wiki' in audio:
                 speak('What would you like to search?')
                 audio = r.listen(source)
                 audio = r.recognize_google(audio)
@@ -836,39 +848,41 @@ def do_stuff():
                     answer = wikipedia.summary(audio, sentences=5)
                     speak(answer)
                 except wikipedia.exceptions.PageError:
-                    speak('We could not find that page, please input your search into the search bar')
-                    answer = input("What would you like to search: ")
+                    speak('We could not find that page, please retry speaking your search')
+                    answer = r.listen(source)
+                    answer = r.recognize_google(answer)
+
                     answer = wikipedia.summary(answer, sentences = 5)
                     speak('Sorry for the inconvinience')
-
-            elif 'define' in audio:
+            
+            if 'define' in audio:
                 speak("What is your word?")
                 audio = r.listen(source)
                 audio = r.recognize_google(audio)
                 word_def = dictionary.meaning(f"{audio}")
                 speak(word_def)
-
-            elif 'synonym' in audio:
+            
+            if 'synonym' in audio:
                 speak("What is your word?")
                 audio = r.listen(source)
                 audio = r.recognize_google(audio)
                 word_syn = dictionary.synonym(f"{audio}")
                 speak(word_syn)
-
-            elif 'antonym' in audio:
+            
+            if 'antonym' in audio:
                 speak("What is your word?")
                 audio = r.listen(source)
                 audio = r.recognize_google(audio)
                 word_ants = dictionary.synonym(f"{audio}")
                 speak(word_ants)
-
-            elif 'calculator' in audio:
+            
+            if 'calculator' in audio:
                 speak("Opening the calculator in one second...")
 
                 t2 = threading.Thread(calc())
                 t2.start()
-
-            elif 'flip' in audio:
+            
+            if 'flip' in audio:
                 speak("Flipping the coin now.")
                 nums = [1, 2]
                 choice = random.choice(nums)
@@ -876,21 +890,28 @@ def do_stuff():
                     speak("The outcome is tails.")
                 elif choice == 2:
                     speak("The outcome is heads.")
-
-            elif 'power off' in audio:
+            
+            if 'power off' in audio:
                 if bluetooth_feedback():
                     speak("It appears its your lucky day, you had a one in 400 chance of being asked the question you "
                           "were asked at the beginning of the session, and because you answered yes we are opening "
                           "the terminal to input on bluetooth compatibility before you leave!")
-                    exp = input('How was your experience? ')
+                    speak("Would you like to leave a review?")
+                    yes_or_no = r.listen(source)
+                    yes_or_no = r.recognize_google(yes_or_no)
+                    if 'yes' in yes_or_no:
+                        speak("Okay, you can speak your review now.")
+                        review = r.listen(source)
+                        review = r.recognize_google(review)
+                        primary_storing.append(review)
 
                 else:
                     exit()
 
                 speak("Powering off, have a good day.")
                 exit()
-
-            elif 'hibernate' in audio:
+            
+            if 'hibernate' in audio:
                 speak('Would you like me to sleep for seconds, minutes or hours?')
                 choice_time = r.listen(source)
                 choice_time = r.recognize_google(choice_time)
@@ -918,10 +939,10 @@ def do_stuff():
                     time.sleep(int((audio*3600)))
                     speak("I'm back.")
 
-            elif 'settings' in audio:
+            if 'settings' in audio:
                 settings_change()
-
-            elif 'translate' or 'Translate' in audio:
+            
+            if 'translate' or 'Translate' in audio:
                 translator = Translator()
                 speak("What is a word or phrase to translate?")
                 words = r.listen(source)
@@ -937,18 +958,18 @@ def do_stuff():
                 translated = translator.translate(words, dest=f'{lower_lang}')
 
                 speak(translated.text)
-            elif 'auto click' in audio:
+
+            if 'auto click' in audio:
                 speak("Please set up the auto-clicker yourself as I can not do that.")
                 auto_click()
                 t2 = threading.Thread(auto_click())
                 t2.start()
 
-            elif 'movement' in audio:
+            if 'movement' in audio:
                 speak("Please initiate the algorithm yourself as I can not do that")
                 t2 = threading.Thread(afk_move())
                 t2.start()
 
-            
         
         # Built-in errors for the speech-recognition library, as well as NN initialization
         except sr.UnknownValueError: 
