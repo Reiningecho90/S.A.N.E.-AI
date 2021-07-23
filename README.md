@@ -20,6 +20,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Projects on hold for this week, vacation until next Sunday (7/10/2021)
 - Back from vacation, posting updated code written prior to vacation (7/19/2021)
 - Working on color mode settings and UI revamp for settings altogether (7/21/2021)
+- Finished settings revamp, color modes will be added shortly (7/23/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
