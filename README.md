@@ -14,6 +14,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Purged to Update-Archive.txt (7/26/2021)
 - Finished all updates for 1.4 and dev version is being released today (7/26/2021)
 - Go see the newest release using the link above! (7/27/2021)
+- Preparing final release for 1.4.1 on August 1st (7/27/2021)
 
 
 SECURITY:
