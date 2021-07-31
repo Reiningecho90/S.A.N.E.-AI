@@ -16,6 +16,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Go see the newest release using the link above! (7/27/2021)
 - Preparing final release for 1.4.1 on August 1st (7/27/2021)
 - 1.4.1 rollout going as planned so far, files will be updated in time for release and GitHub wiki will follow soon after (7/29/2021)
+- Ready for release tomorrow, all files are in order and issues are fixed (7/31/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
