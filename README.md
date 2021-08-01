@@ -6,7 +6,7 @@ Explore the AI and please suggest what to do next or how to improve it!
 Wiki page to learn about the project: https://github.com/Reiningecho90/S.A.N.E.-AI/wiki
 
 ANNOUNCEMENTS: 
-V1.4.0 is now live! Go download it: https://github.com/Reiningecho90/S.A.N.E.-AI/releases/tag/v1.4.0
+V1.4.1 is now live! Go download it: https://github.com/Reiningecho90/S.A.N.E.-AI/releases/tag/v1.4.1
 
 Its official! The new website hosted by GitHub is now live: https://reiningecho90.github.io/S.A.N.E.-AI/!
 
