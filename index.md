@@ -8,6 +8,8 @@
 - 1.4.0: Unstable Test Beta
 - 1.4.1: Stable Beta
 
+## S.A.N.E. Version 2.0 will be the first non beta and overall final release of S.A.N.E with the goal of making it the best it possibly can while maintaining a free open source stature. Stay tuned for more information and be prepared to check back on September 1st for v2.0!
+
 ## Hello, Welcome to S.A.N.E.
 
 Welcome to the official website for the S.A.N.E. AI. The nicknae for this AI is S.A.N.E. which stand for Semi-Artificial Neural Envoronment. this is the project I have been working on in my free time, and is also helping me to practice for the PCAP exam that I will be taking soon. As a young developer, I strive to make the best program I possibly can.
