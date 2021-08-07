@@ -21,6 +21,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Version 2.0 will be the final release of S.A.N.E. as there is not much more to add with the goal of being completely free to use and open source. 2.0
 will be released on September 1st to make sure everything goes well with the release (8/3/2021)
 - v2.0 will have plenty of easter eggs (8/5/2021)
+As noted yesterday in the issue raised, I have applied update commands for the GUI that should help with lag (8/6/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
