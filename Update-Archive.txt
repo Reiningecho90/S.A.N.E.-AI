@@ -104,3 +104,14 @@ Update archive:
 - Working on color mode settings and UI revamp for settings altogether (7/21/2021)
 - Finished settings revamp, color modes will be added shortly (7/23/2021)
 - Implemented unfinished business from 1.3 update where the pronouns setting wouldn't have an effect on the AI speech (7/24/2021)
+
+- Finished all updates for 1.4 and dev version is being released today (7/26/2021)
+- Go see the newest release using the link above! (7/27/2021)
+- Preparing final release for 1.4.1 on August 1st (7/27/2021)
+- 1.4.1 rollout going as planned so far, files will be updated in time for release and GitHub wiki will follow soon after (7/29/2021)
+- Ready for release tomorrow, all files are in order and issues are fixed (7/31/2021)
+- Released version 1.4.1, download can be found above! (8/1/2021)
+- Version 2.0 will be the final release of S.A.N.E. as there is not much more to add with the goal of being completely free to use and open source. 2.0
+will be released on September 1st to make sure everything goes well with the release (8/3/2021)
+- v2.0 will have plenty of easter eggs (8/5/2021)
+- As noted yesterday in the issue raised, I have applied update commands for the GUI that should help with lag (8/6/2021)
