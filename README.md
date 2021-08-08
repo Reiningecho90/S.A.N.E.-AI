@@ -11,17 +11,9 @@ V1.4.1 is now live! Go download it: https://github.com/Reiningecho90/S.A.N.E.-AI
 Its official! The new website hosted by GitHub is now live: https://reiningecho90.github.io/S.A.N.E.-AI/!
 
 UPDATES (Find in-depth updates in the project on my page):
-- Purged to Update-Archive.txt (7/26/2021)
-- Finished all updates for 1.4 and dev version is being released today (7/26/2021)
-- Go see the newest release using the link above! (7/27/2021)
-- Preparing final release for 1.4.1 on August 1st (7/27/2021)
-- 1.4.1 rollout going as planned so far, files will be updated in time for release and GitHub wiki will follow soon after (7/29/2021)
-- Ready for release tomorrow, all files are in order and issues are fixed (7/31/2021)
-- Released version 1.4.1, download can be found above! (8/1/2021)
-- Version 2.0 will be the final release of S.A.N.E. as there is not much more to add with the goal of being completely free to use and open source. 2.0
-will be released on September 1st to make sure everything goes well with the release (8/3/2021)
-- v2.0 will have plenty of easter eggs (8/5/2021)
-As noted yesterday in the issue raised, I have applied update commands for the GUI that should help with lag (8/6/2021)
+- Purged to Update-Archive.txt (8/8/2021)
+- Updates will be posted at a slower rate as there isn't much to optimize for v2.0 (8/8/2021)
+
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
