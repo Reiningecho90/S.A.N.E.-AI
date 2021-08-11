@@ -14,7 +14,8 @@ UPDATES (Find in-depth updates in the project on my page):
 - Purged to Update-Archive.txt (8/8/2021)
 - Updates will be posted at a slower rate as there isn't much to optimize for v2.0 (8/8/2021)
 - Updates the ghpages website to comply with the new updates in terms of the future of S.A.N.E. (8/8/2021)
-- finished GUI optimization, update loops wer eimplementad instead of mainloop programming (8/9/2021)
+- Finished GUI optimization, update loops wer eimplementad instead of mainloop programming (8/9/2021)
+- I will be on vacation later this month and that will halt all projects unless I can find time to fit coding in here and there (8/10/2021)
 
 
 SECURITY:
