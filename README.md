@@ -11,13 +11,8 @@ V1.4.1 is now live! Go download it: https://github.com/Reiningecho90/S.A.N.E.-AI
 Its official! The new website hosted by GitHub is now live: https://reiningecho90.github.io/S.A.N.E.-AI/!
 
 UPDATES (Find in-depth updates in the project on my page):
-- Purged to Update-Archive.txt (8/8/2021)
-- Updates will be posted at a slower rate as there isn't much to optimize for v2.0 (8/8/2021)
-- Updates the ghpages website to comply with the new updates in terms of the future of S.A.N.E. (8/8/2021)
-- Finished GUI optimization, update loops wer eimplementad instead of mainloop programming (8/9/2021)
-- I will be on vacation later this month and that will halt all projects unless I can find time to fit coding in here and there (8/10/2021)
-- Finished Login to Main GUI optimization, not much could be done to help this as it was already fairly wuick (8/10/2021)
-- Everything is almost ready, once the file is in exe format the new release will be drafted and set to release on September 1st (8/12/2021)
+- Purged to Update-Archive.txt (8/13/2021)
+- As this project reaches end of life, the ability to buy out the source code is available on my profile page. By buying this you will be the only person able to access the code, as this project will be archived if it sells. (8/13/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
