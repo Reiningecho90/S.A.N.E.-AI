@@ -17,7 +17,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Finished GUI optimization, update loops wer eimplementad instead of mainloop programming (8/9/2021)
 - I will be on vacation later this month and that will halt all projects unless I can find time to fit coding in here and there (8/10/2021)
 - Finished Login to Main GUI optimization, not much could be done to help this as it was already fairly wuick (8/10/2021)
-
+- Everything is almost ready, once the file is in exe format the new release will be drafted and set to release on September 1st (8/12/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
