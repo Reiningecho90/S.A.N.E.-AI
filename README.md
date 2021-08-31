@@ -14,6 +14,7 @@ UPDATES (Find in-depth updates in the project on my page):
 - Purged to Update-Archive.txt (8/13/2021)
 - As this project reaches end of life, the ability to buy out the source code is available on my profile page. By buying this you will be the only person able to access the code, as this project will be archived if it sells. (8/13/2021)
 - Back from two week vacation (8/29/2021)
+- Everything is ready for push tomorrow (8/31/2021)
 
 SECURITY:
 Read SECURITY.md for more information on security issues, reporting issues and versions of S.A.N.E. that have security support.
